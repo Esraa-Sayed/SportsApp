@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -164,6 +164,7 @@
 		0259D23B27A5E90200CFF3BE /* First storyboard screens */ = {
 			isa = PBXGroup;
 			children = (
+				02554FBA27A2E0730069AC9F /* ViewController.swift */,
 			);
 			path = "First storyboard screens";
 			sourceTree = "<group>";
@@ -171,7 +172,6 @@
 		0259D23C27A5E92100CFF3BE /* Second storyboard screens */ = {
 			isa = PBXGroup;
 			children = (
-				02554FBA27A2E0730069AC9F /* ViewController.swift */,
 			);
 			path = "Second storyboard screens";
 			sourceTree = "<group>";
@@ -190,7 +190,6 @@
 				D3C674BC1D38F685E78E9A50 /* Pods-SportsApp.debug.xcconfig */,
 				55880028BD210D422D9BEA1F /* Pods-SportsApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
