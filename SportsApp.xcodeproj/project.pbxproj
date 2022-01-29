@@ -14,6 +14,7 @@
 		02554FC127A2E0730069AC9F /* SportsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02554FBF27A2E0730069AC9F /* SportsApp.xcdatamodeld */; };
 		02554FC327A2E0760069AC9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02554FC227A2E0760069AC9F /* Assets.xcassets */; };
 		02554FC627A2E0760069AC9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02554FC427A2E0760069AC9F /* LaunchScreen.storyboard */; };
+		0259D23E27A5EAB700CFF3BE /* SecondStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0259D23D27A5EAB700CFF3BE /* SecondStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		02554FC227A2E0760069AC9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02554FC527A2E0760069AC9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02554FC727A2E0760069AC9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0259D23D27A5EAB700CFF3BE /* SecondStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +60,113 @@
 		02554FB527A2E0730069AC9F /* SportsApp */ = {
 			isa = PBXGroup;
 			children = (
-				02554FB627A2E0730069AC9F /* AppDelegate.swift */,
-				02554FB827A2E0730069AC9F /* SceneDelegate.swift */,
-				02554FBA27A2E0730069AC9F /* ViewController.swift */,
-				02554FBC27A2E0730069AC9F /* Main.storyboard */,
-				02554FC227A2E0760069AC9F /* Assets.xcassets */,
-				02554FC427A2E0760069AC9F /* LaunchScreen.storyboard */,
-				02554FC727A2E0760069AC9F /* Info.plist */,
-				02554FBF27A2E0730069AC9F /* SportsApp.xcdatamodeld */,
+				0259D23527A5E77900CFF3BE /* Core */,
+				0259D23427A5E75600CFF3BE /* Resources */,
+				0259D23227A5E6C500CFF3BE /* Stroyboards */,
+				0259D23127A5E6B500CFF3BE /* Model */,
+				0259D23327A5E6DE00CFF3BE /* Configuration */,
+				0259D23627A5E81900CFF3BE /* CoreData */,
+				0259D23727A5E83D00CFF3BE /* Scenes */,
 			);
 			path = SportsApp;
+			sourceTree = "<group>";
+		};
+		0259D23127A5E6B500CFF3BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0259D23227A5E6C500CFF3BE /* Stroyboards */ = {
+			isa = PBXGroup;
+			children = (
+				02554FBC27A2E0730069AC9F /* Main.storyboard */,
+				0259D23D27A5EAB700CFF3BE /* SecondStoryboard.storyboard */,
+			);
+			path = Stroyboards;
+			sourceTree = "<group>";
+		};
+		0259D23327A5E6DE00CFF3BE /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				02554FC727A2E0760069AC9F /* Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		0259D23427A5E75600CFF3BE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				02554FC227A2E0760069AC9F /* Assets.xcassets */,
+				02554FC427A2E0760069AC9F /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0259D23527A5E77900CFF3BE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				02554FB627A2E0730069AC9F /* AppDelegate.swift */,
+				02554FB827A2E0730069AC9F /* SceneDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0259D23627A5E81900CFF3BE /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				02554FBF27A2E0730069AC9F /* SportsApp.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		0259D23727A5E83D00CFF3BE /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0259D23A27A5E8EE00CFF3BE /* Views */,
+				0259D23927A5E8D900CFF3BE /* Presenter */,
+				0259D23827A5E85A00CFF3BE /* Interactor */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		0259D23827A5E85A00CFF3BE /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		0259D23927A5E8D900CFF3BE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0259D23A27A5E8EE00CFF3BE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0259D23C27A5E92100CFF3BE /* Second storyboard screens */,
+				0259D23B27A5E90200CFF3BE /* First storyboard screens */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0259D23B27A5E90200CFF3BE /* First storyboard screens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "First storyboard screens";
+			sourceTree = "<group>";
+		};
+		0259D23C27A5E92100CFF3BE /* Second storyboard screens */ = {
+			isa = PBXGroup;
+			children = (
+				02554FBA27A2E0730069AC9F /* ViewController.swift */,
+			);
+			path = "Second storyboard screens";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +230,7 @@
 				02554FC627A2E0760069AC9F /* LaunchScreen.storyboard in Resources */,
 				02554FC327A2E0760069AC9F /* Assets.xcassets in Resources */,
 				02554FBE27A2E0730069AC9F /* Main.storyboard in Resources */,
+				0259D23E27A5EAB700CFF3BE /* SecondStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SportsApp/Info.plist;
+				INFOPLIST_FILE = SportsApp/Configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,7 +406,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SportsApp/Info.plist;
+				INFOPLIST_FILE = SportsApp/Configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
