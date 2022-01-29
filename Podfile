@@ -8,7 +8,6 @@ target 'SportsApp' do
   # Pods for SportsApp
   pod 'Alamofire', '~> 4.0'
   pod 'Kingfisher', '~> 5.0'
-  pod 'SKActivityIndicatorView', '~> 0.1.0'
   pod 'AlamofireObjectMapper'
 
 end
