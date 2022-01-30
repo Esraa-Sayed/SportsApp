@@ -6,8 +6,7 @@ target 'SportsApp' do
   use_frameworks!
 
   # Pods for SportsApp
-  pod 'Alamofire', '~> 4.0'
+  pod 'Alamofire'
   pod 'Kingfisher', '~> 5.0'
-  pod 'AlamofireObjectMapper'
 
 end
