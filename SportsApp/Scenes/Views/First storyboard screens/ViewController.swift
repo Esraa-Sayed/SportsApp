@@ -13,6 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let api:SportsAPiProtocol = SportsAPi()
+        api.getSports { [weak self](result) in
+                switch result{
+                case .success(let response):
+                    var sports = response?.sports
+                    print(sports?[0].idSport)
+                   
+                case .failure(_):
+                    print("Error")
+                }
+            }
         
     }
 

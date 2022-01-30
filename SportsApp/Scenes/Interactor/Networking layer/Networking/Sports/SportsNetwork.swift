@@ -15,12 +15,12 @@ extension SportsNetwork:TargetType
 {
     var baseURL: String
     {
-        return "https://www.thesportsdb.com/api/v1/json/2"
+        return ApiLinkes.baseLink.rawValue
     }
     
     var path: String
     {
-        return "/all_sports.php"
+        return ApiLinkes.allSports.rawValue
     }
     
     var method: HTTPMethod
