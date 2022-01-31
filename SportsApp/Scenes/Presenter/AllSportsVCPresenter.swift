@@ -11,7 +11,9 @@ import UIKit
 protocol SportsView :class {
     func showIndicator(indicator :UIActivityIndicatorView?)
     func hideIndicator(indicator :UIActivityIndicatorView?)
+    func navigateToLeagues(sportName:String)
     func fetchingDataSuccess()
+ 
 }
 protocol sportViewCell {
     func displayImag(imagURL:String)
@@ -65,5 +67,7 @@ class AllSportsVCPresenter
     func didSelectedRow(index:Int)
     {
          let sport = sports[index]
+        view?.navigateToLeagues(sportName: sport.strSport ?? "UnKnown")
     }
+
 }
