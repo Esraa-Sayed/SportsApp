@@ -26,11 +26,21 @@ class AllSportsVCPresenter
     {
         self.view = view
     }
-    func viewDidLoad(indicator :UIActivityIndicatorView?) {
-        getSports(indicator: indicator)
+    func viewDidLoad(indicator :UIActivityIndicatorView?)->Bool {
+         view?.showIndicator(indicator: indicator)
+        if CheckInternetConnectivity.isConnectedToInternet {
+               print("Yes! internet is available.")
+               getSports(indicator: indicator)
+            return true;
+        }
+        else
+        {
+            view?.hideIndicator(indicator: indicator)
+            return false;
+        }
+       
     }
     private func getSports(indicator :UIActivityIndicatorView?) {
-        view?.showIndicator(indicator: indicator)
        interactor.getSports { [weak self](result) in
         self?.view?.hideIndicator(indicator: indicator)
             switch result{
