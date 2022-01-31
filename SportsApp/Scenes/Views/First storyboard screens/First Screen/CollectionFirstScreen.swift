@@ -10,13 +10,12 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class CollectionViewFirstScreen: UICollectionViewController {
+class CollectionFirstScreen: UICollectionViewController {
     var presenter :AllSportsVCPresenter!
     var indicator :UIActivityIndicatorView?
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sports"
-        
         indicator = UIActivityIndicatorView(style: .large)
         indicator?.center = self.view.center
         self.view.addSubview(indicator!)

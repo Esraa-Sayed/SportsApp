@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-extension CollectionViewFirstScreen:SportsView
+extension CollectionFirstScreen:SportsView
 {
     func showIndicator(indicator :UIActivityIndicatorView?) {
             indicator?.startAnimating()

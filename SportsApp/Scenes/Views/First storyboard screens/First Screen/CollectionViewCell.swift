@@ -16,7 +16,7 @@ class CollectionViewCell: UICollectionViewCell,sportViewCell {
         sportImage.kf.setImage(with: URL(string: imagURL),placeholder: UIImage(named: "PlaceholderImg"))
          sportImage.layer.cornerRadius = 15
         sportImage.layer.masksToBounds = true
-        viewToTitle.layer.cornerRadius = 15
+        viewToTitle.layer.cornerRadius = 5
     }
     func displayName(sportName:String)
     {
