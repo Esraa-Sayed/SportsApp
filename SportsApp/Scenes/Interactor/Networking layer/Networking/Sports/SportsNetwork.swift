@@ -7,11 +7,11 @@
 //
 
 import Foundation
-enum SportsNetwork
+enum ALLSportsNetwork
 {
     case getUsers
 }
-extension SportsNetwork:TargetType
+extension ALLSportsNetwork:TargetType
 {
     var baseURL: String
     {

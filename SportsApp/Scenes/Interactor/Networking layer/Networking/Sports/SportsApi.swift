@@ -10,7 +10,7 @@ import Foundation
 protocol SportsAPiProtocol {
     func getSports(complition: @escaping(Result<SportsResponse?,NSError>)->Void)
 }
-class SportsAPi:BaseApi<SportsNetwork>,SportsAPiProtocol
+class SportsAPi:BaseApi<ALLSportsNetwork>,SportsAPiProtocol
 {
     static let shared = SportsAPi()
     func getSports(complition: @escaping(Result<SportsResponse?,NSError>)->Void) {
