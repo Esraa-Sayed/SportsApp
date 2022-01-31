@@ -15,6 +15,7 @@ protocol SportsView :class {
 }
 protocol sportViewCell {
     func displayImag(imagURL:String)
+    func displayName(sportName:String)
 }
 class AllSportsVCPresenter
 {
@@ -49,6 +50,7 @@ class AllSportsVCPresenter
     func configure(cell:sportViewCell ,forIndex: Int){
         let sport = sports[forIndex]
         cell.displayImag(imagURL: sport.strSportThumb ?? "https://i.pinimg.com/564x/ff/f4/ae/fff4ae3259e01a20794bfed0fbd1ed13.jpg")
+        cell.displayName(sportName: sport.strSport ?? "UnKnown")
     }
     func didSelectedRow(index:Int)
     {
