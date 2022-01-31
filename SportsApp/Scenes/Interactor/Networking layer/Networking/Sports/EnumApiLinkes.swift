@@ -12,4 +12,5 @@ enum ApiLinkes :String
     case baseLink = "https://www.thesportsdb.com/api/v1/json/2"
     case allSports = "/all_sports.php"
     
+    
 }

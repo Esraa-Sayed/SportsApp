@@ -18,7 +18,7 @@ class ViewController: UIViewController {
                 case .success(let response):
                     var sports = response?.sports
                     print(sports?[0].idSport)
-                   
+                    print(sports?.count)
                 case .failure(_):
                     print("Error")
                 }
