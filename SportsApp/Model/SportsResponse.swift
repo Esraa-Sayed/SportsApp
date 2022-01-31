@@ -9,5 +9,6 @@
 import Foundation
 
 class SportsResponse: Decodable {
+    
     var sports:[Sports]
 }

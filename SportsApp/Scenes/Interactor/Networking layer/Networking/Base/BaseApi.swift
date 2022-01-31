@@ -14,7 +14,7 @@ class BaseApi<T:TargetType>
         guard let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue) else { return }
         let headers = target.headers
         let prams = bulidParams(task: target.task)
-        print("\(target.baseURL)  \(target.path)")
+        print("\(target.baseURL)\(target.path)")
         Alamofire.request(target.baseURL+target.path,method:method,parameters:prams.0,encoding:prams.1,headers:headers).responseJSON { (response) in
             guard let statusCode = response.response?.statusCode else
             {

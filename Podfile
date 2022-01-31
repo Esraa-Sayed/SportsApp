@@ -8,5 +8,7 @@ target 'SportsApp' do
   # Pods for SportsApp
   pod 'Alamofire'
   pod 'Kingfisher', '~> 5.0'
+  pod 'SwiftyJSON', '~> 4.0'
+
 
 end
