@@ -14,7 +14,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="xla-Ln-uM8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.1279170513" green="0.39749759439999999" blue="0.51419508459999996" alpha="0.76706977739726023" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.31388238133030633" blue="0.33585818527918787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="1" id="d9i-2Y-VFr">
                             <size key="itemSize" width="180" height="180"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -42,7 +42,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.1279170513" green="0.39749759439999999" blue="0.51419508459999996" alpha="0.7049175941780822" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.0" green="0.25224743030000002" blue="0.2699079949" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="9Q7-8K-gEs" firstAttribute="leading" secondItem="sen-Iy-QDI" secondAttribute="leading" id="KdR-Kh-iI1"/>
                                                 <constraint firstAttribute="height" constant="32" id="Osc-Km-wQO"/>
@@ -119,6 +119,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.0" green="0.31388238130000001" blue="0.3358581853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.31388238130000001" blue="0.3358581853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="GtQ-fL-ksh" kind="relationship" relationship="viewControllers" id="wEf-Kl-j7u"/>
@@ -138,6 +140,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qh0-R1-KO7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.0" green="0.31388238130000001" blue="0.3358581853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -148,11 +153,11 @@
             </objects>
             <point key="canvasLocation" x="1728.985507246377" y="107.8125"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Favourite-->
         <scene sceneID="3an-EW-RP5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sg3-Tz-67A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="suit.heart.fill" catalog="system" id="pP3-Q4-0Qn"/>
+                    <tabBarItem key="tabBarItem" title="Favourite" image="suit.heart.fill" catalog="system" id="pP3-Q4-0Qn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SNO-I9-JE8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
