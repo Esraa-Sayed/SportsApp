@@ -21,7 +21,7 @@ class CollectionFirstScreen: UICollectionViewController {
         self.view.addSubview(indicator!)
         
         presenter = AllSportsVCPresenter(view: self)
-        if !presenter.viewDidLoad(indicator: indicator)
+        if !presenter.viewDidLoad()
         {
             showToast(controller: self, message : "No internet connection", seconds: 4.0)
         }

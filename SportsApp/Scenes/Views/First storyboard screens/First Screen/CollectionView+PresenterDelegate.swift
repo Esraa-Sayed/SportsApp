@@ -16,11 +16,11 @@ extension CollectionFirstScreen:SportsView
         self.navigationController?.pushViewController(VC, animated: true)
     }
     
-    func showIndicator(indicator :UIActivityIndicatorView?) {
+    func showIndicator() {
             indicator?.startAnimating()
     }
     
-    func hideIndicator(indicator :UIActivityIndicatorView?) {
+    func hideIndicator() {
          indicator?.stopAnimating()
     }
     

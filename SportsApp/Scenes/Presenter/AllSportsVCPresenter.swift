@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import UIKit
 protocol SportsView :class {
-    func showIndicator(indicator :UIActivityIndicatorView?)
-    func hideIndicator(indicator :UIActivityIndicatorView?)
+    func showIndicator()
+    func hideIndicator()
     func navigateToLeagues(sportName:String)
     func fetchingDataSuccess()
  
@@ -28,23 +27,23 @@ class AllSportsVCPresenter
     {
         self.view = view
     }
-    func viewDidLoad(indicator :UIActivityIndicatorView?)->Bool {
-         view?.showIndicator(indicator: indicator)
+    func viewDidLoad()->Bool {
+         view?.showIndicator()
         if CheckInternetConnectivity.isConnectedToInternet {
                print("Yes! internet is available.")
-               getSports(indicator: indicator)
+               getSports()
             return true;
         }
         else
         {
-            view?.hideIndicator(indicator: indicator)
+            view?.hideIndicator()
             return false;
         }
        
     }
-    private func getSports(indicator :UIActivityIndicatorView?) {
+    private func getSports() {
        interactor.getSports { [weak self](result) in
-        self?.view?.hideIndicator(indicator: indicator)
+        self?.view?.hideIndicator()
             switch result{
             case .success(let response):
                 self?.sports = response?.sports ?? []
