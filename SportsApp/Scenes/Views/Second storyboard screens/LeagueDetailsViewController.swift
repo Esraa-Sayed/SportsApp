@@ -39,7 +39,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
         
        leagueDetailsProtocol = LeagueDetailsPresenter(view: self)
        leagueDetailsProtocol?.loadEvents(id:"")
-       leagueDetailsProtocol?.loadLatestResults(id: "")
+       //leagueDetailsProtocol?.loadLatestResults(id: "")
        leagueDetailsProtocol?.loadTeams(id: "")
                
     }

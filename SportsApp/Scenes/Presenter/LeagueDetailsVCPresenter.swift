@@ -32,7 +32,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
     
     
     var leagueDetailsView:LeagueDetailsViewProtocol?
-    var dataSource:EventDataSource?
+    var dataSource = EventDataSource()
     var eventsArray : [Event]?
     var latestResultsArray : [Event]?
     var teamsArray : [Team]?
@@ -57,9 +57,31 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
           
        }
     
+    func loadEvents(id:String) {
+        eventsArray = dataSource.getEvents(id: id, completion: {
+            self.leagueDetailsView?.hideIndicator()
+        })
+        print(eventsArray?.count ?? 0)
+        if eventsArray?.count == 0{
+               self.leagueDetailsView?.hideIndicator()
+               self.leagueDetailsView?.updateUIViewEvent(events: eventsArray!)
+               //view controller func
+           }else{
+               self.leagueDetailsView?.hideIndicator()
+               print("error loading events")
+           }
+            print(eventsArray?.count ?? 0)
+       }
+       
+       func getEventsCount()->Int{
+           return eventsArray!.count
+       }
+       
+
+    
     func loadLatestResults(id:String) {
-       latestResultsArray = dataSource?.getLatestResults(id: id)
-        if latestResultsArray == nil{
+        latestResultsArray = dataSource.getLatestResults(id: id)
+        if latestResultsArray!.count == 0{
             self.leagueDetailsView?.hideIndicator()
             self.leagueDetailsView?.updateUIViewLatestResult(latestResult: latestResultsArray!)
             //view controller func
@@ -77,8 +99,8 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
     
    
     func loadTeams(id:String) {
-        teamsArray = dataSource?.getTeam(id: id)
-        if teamsArray == nil{
+        teamsArray = dataSource.getTeam(id: id)
+        if teamsArray?.count == 0{
             self.leagueDetailsView?.hideIndicator()
             self.leagueDetailsView?.updateUIViewTeam(teams: teamsArray!)
             //view controller func
@@ -93,22 +115,5 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
         return teamsArray!.count
     }
     
-    func loadEvents(id:String) {
-        eventsArray = dataSource?.getEvents(id: id)
-        if eventsArray == nil{
-            self.leagueDetailsView?.hideIndicator()
-            self.leagueDetailsView?.updateUIViewEvent(events: eventsArray!)
-            //view controller func
-        }else{
-            self.leagueDetailsView?.hideIndicator()
-            print("error loading events")
-        }
-         print(eventsArray?.count ?? 0)
-    }
-    
-    func getEventsCount()->Int{
-        return eventsArray!.count
-    }
-    
-
+   
 }

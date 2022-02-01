@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 protocol EventDataSourceProtocol {
-    func getEvents(id:String)->[Event]
+    func getEvents(id:String,completion : ()->())->[Event]
     func getLatestResults (id:String)->[Event]
     func getTeam(id:String)->[Team]
     
@@ -20,7 +20,8 @@ protocol EventDataSourceProtocol {
 
 class EventDataSource : EventDataSourceProtocol {
     
-    func getEvents(id: String)->[Event] {
+    
+    func getEvents(id: String,completion : ()->())->[Event] {
         let url = "https://www.thesportsdb.com/api/v1/json/2/searchevents.php?e="+id
         var eventsArray = [Event]()
         Alamofire.request(url).response { response in
@@ -37,15 +38,14 @@ class EventDataSource : EventDataSourceProtocol {
                             let name = event[Constants.strEvent].stringValue
                             let date = event[Constants.strDateEvent].stringValue
                             let time = event[Constants.strTimeEvent].stringValue
-                            print(name)
                             eventsArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time ))
 
                         }
 
                     }
                     print(eventsArray.count)
-                    debugPrint(response.data)
                 }
+        completion()
         return eventsArray
     }
     
@@ -75,8 +75,6 @@ class EventDataSource : EventDataSourceProtocol {
                 }
                 
                print(latestResultsArray.count)
-                
-                debugPrint(response.data)
             }
         return latestResultsArray
         }
@@ -101,7 +99,6 @@ class EventDataSource : EventDataSourceProtocol {
                 }
                 
                print(teamsArray.count)
-               debugPrint(response.data)
             }
         return teamsArray
         }
