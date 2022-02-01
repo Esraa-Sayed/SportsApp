@@ -47,5 +47,9 @@ enum Constants {
      static let strStadium = "strStadium"
     static let strStadiumLocation = "strStadiumLocation"
     static let teamDetailsNotification = "teamDetailsNotification"
+    static let baseLink = "https://www.thesportsdb.com/api/v1/json/2"
+    static let allSports = "/all_sports.php"
+   static let allLeagues = "/search_all_leagues.php"
+    
 }
 

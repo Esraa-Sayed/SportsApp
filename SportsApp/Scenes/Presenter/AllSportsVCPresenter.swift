@@ -65,8 +65,10 @@ class AllSportsVCPresenter
     }
     func didSelectedRow(index:Int)
     {
-         let sport = sports[index]
-        view?.navigateToLeagues(sportName: sport.strSport ?? "UnKnown")
+        let sport = sports[index]
+        print(sport.strSport)
+        //sportName: sport.strSport ?? "UnKnown"
+        view?.navigateToLeagues(sportName:sport.strSport ?? "")
     }
 
 }

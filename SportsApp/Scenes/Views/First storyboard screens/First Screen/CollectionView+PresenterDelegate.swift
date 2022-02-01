@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 extension CollectionFirstScreen:SportsView
 {
-    func navigateToLeagues(sportName: String) {
+    func navigateToLeagues(sportName:String) {
         var VC =  self.storyboard?.instantiateViewController(withIdentifier: "TableLeaguesViewController") as! TableLeaguesViewController
         VC.sportName = sportName
         self.navigationController?.pushViewController(VC, animated: true)

@@ -7,20 +7,21 @@
 //
 
 import Foundation
+import Alamofire
 enum ALLSportsNetwork
 {
-    case getUsers
+    case getSports
 }
 extension ALLSportsNetwork:TargetType
 {
     var baseURL: String
     {
-        return ApiLinkes.baseLink.rawValue
+        return Constants.baseLink
     }
     
     var path: String
     {
-        return ApiLinkes.allSports.rawValue
+        return Constants.allSports
     }
     
     var method: HTTPMethod
@@ -37,4 +38,38 @@ extension ALLSportsNetwork:TargetType
         return [:]
     }
     
+}
+enum AllLeaguesNetwork
+{
+    case getLegues(sportName:String)
+}
+extension AllLeaguesNetwork:TargetType
+{
+    var baseURL: String
+       {
+           return Constants.baseLink
+       }
+       
+       var path: String
+       {
+           return Constants.allLeagues
+       }
+       
+       var method: HTTPMethod
+       {
+           return .get
+       }
+       
+       var task: Task
+       {
+        switch self {
+        case .getLegues(let sportName):
+            return .requestParameters(parameters: ["s":sportName], encoding: URLEncoding.default)
+        }
+       
+       }
+       var headers: [String : String]?
+       {
+           return [:]
+       }
 }

@@ -9,11 +9,24 @@
 import UIKit
 
 class TableLeaguesViewController: UITableViewController {
+    @IBOutlet var myTable: UITableView!
     var sportName:String = ""
+    var presenter :AllLeaguesVCPresenter!
+    var indicator :UIActivityIndicatorView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(sportName)
         title = "Leagues"
+
+        indicator = UIActivityIndicatorView(style: .large)
+        indicator?.center = self.view.center
+        self.view.addSubview(indicator!)
+        presenter = AllLeaguesVCPresenter(view: self)
+        presenter.setSportName(sportName: sportName)
+       if !presenter.viewDidLoad()
+       {
+           Toast.showToast(controller: self, message : "No internet connection", seconds: 4.0)
+       }
+        
     }
 
     // MARK: - Table view data source

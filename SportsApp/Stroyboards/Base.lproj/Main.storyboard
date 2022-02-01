@@ -195,6 +195,9 @@
                             <outlet property="delegate" destination="KRt-1e-fWU" id="mud-uF-Vet"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="myTable" destination="PEM-dW-jUk" id="6v1-wS-M7H"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="718-n8-JNY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

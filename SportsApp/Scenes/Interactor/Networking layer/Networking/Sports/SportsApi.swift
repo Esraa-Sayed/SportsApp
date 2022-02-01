@@ -14,7 +14,7 @@ class SportsAPi:BaseApi<ALLSportsNetwork>,SportsAPiProtocol
 {
     static let shared = SportsAPi()
     func getSports(complition: @escaping(Result<SportsResponse?,NSError>)->Void) {
-        self.fetchData(target: .getUsers, responseClass: SportsResponse.self) { (result) in
+        self.fetchData(target: .getSports, responseClass: SportsResponse.self) { (result) in
             complition(result)
         }
     }
