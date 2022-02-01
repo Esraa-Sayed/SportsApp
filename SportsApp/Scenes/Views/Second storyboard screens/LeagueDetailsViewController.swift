@@ -16,22 +16,90 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     @IBOutlet weak var latestResultsCollectionView: UICollectionView!
     
     @IBOutlet weak var teamsCollectionView: UICollectionView!
+    
     var indicator :UIActivityIndicatorView?
-    var eventssArray:[Event]?
+    var eventsArray:[Event]?
     var latestResultsArray:[Event]?
     var teamsArray:[Team]?
     
+    var leagueDetailsProtocol:LeagueDetailsProtocol?
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.eventsCollectionView.delegate = self
+        self.eventsCollectionView.dataSource = self
+              
+        self.latestResultsCollectionView.delegate = self
+        self.latestResultsCollectionView.dataSource = self
+              
+        self.teamsCollectionView.delegate = self
+        self.teamsCollectionView.dataSource = self
+              
         
+       leagueDetailsProtocol = LeagueDetailsPresenter(view: self)
+       leagueDetailsProtocol?.loadEvents(id:"")
+       leagueDetailsProtocol?.loadLatestResults(id: "")
+       leagueDetailsProtocol?.loadTeams(id: "")
+               
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           <#code#>
+             if (collectionView == self.eventsCollectionView) {
+                   return  eventsArray?.count ?? 0
+           } else if (collectionView == self.latestResultsCollectionView){
+               return  latestResultsArray?.count ?? 0
+             } else {
+               return  teamsArray?.count ?? 0
+           }
+       }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+           if collectionView == self.teamsCollectionView {
+               
+           }
        }
        
-       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           <#code#>
+       func numberOfSections(in collectionView: UICollectionView) -> Int {
+           if (collectionView == self.eventsCollectionView) {
+               return 1
+           } else if (collectionView == self.latestResultsCollectionView){
+               return  1
+           } else {
+               return 1
+           }
+       }
+       
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+           if collectionView == self.latestResultsCollectionView {
+               let    cell = latestResultsCollectionView.dequeueReusableCell(withReuseIdentifier: "latestResultCell", for: indexPath) as! LastResultCollectionViewCell
+               cell.teamName.text = latestResultsArray![indexPath.row].eventName
+               cell.teamScore.text = String (describing: latestResultsArray![indexPath.row].intHomeScore )
+                   + " VS " + String (describing: latestResultsArray![indexPath.row].intAwayScore )
+               cell.teamDate.text = latestResultsArray![indexPath.row].eventDate
+               cell.teamTime.text = latestResultsArray![indexPath.row].eventTime
+               print("cell latest result")
+               return cell
+           }
+           else if collectionView == self.eventsCollectionView {
+               let    cell = eventsCollectionView.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as! EventCollectionViewCell
+               cell.eventName.text = eventsArray![indexPath.row].eventName
+               cell.eventDate.text = eventsArray![indexPath.row].eventDate
+               cell.eventTime.text = eventsArray![indexPath.row].eventTime
+                print("cell events cell")
+               return cell
+               
+           }else  if collectionView == self.teamsCollectionView  {
+                 let  cell = teamsCollectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamCollectionViewCell
+               cell.teamImage.kf.indicatorType = .activity
+               cell.teamImage.kf.setImage(with: URL(string: teamsArray![indexPath.row].imageURL))
+               print("team cell")
+                return cell
+               
+           }
+      
+           return UICollectionViewCell()
        }
 
   

@@ -10,4 +10,9 @@ import UIKit
 
 class EventCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var eventName: UILabel!
+    
+    @IBOutlet weak var eventDate: UILabel!
+    
+    @IBOutlet weak var eventTime: UILabel!
 }

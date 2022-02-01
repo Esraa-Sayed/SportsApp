@@ -45,9 +45,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
             leagueDetailsView?.showIndicator()
         if CheckInternetConnectivity.isConnectedToInternet {
             print("Yes! internet is available.")
-            loadTeams(id: " ")
-            loadEvents(id: " ")
-            loadLatestResults(id: " ")
+            
             return true;
         }
         else

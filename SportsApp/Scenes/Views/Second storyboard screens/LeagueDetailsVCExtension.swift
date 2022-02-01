@@ -33,7 +33,7 @@ extension LeagueDetailsViewController {
        
        func updateUIViewEvent(events: [Event]) {
           // print("updateUIViewEvent")
-           eventssArray = events
+           eventsArray = events
           // eventsCollectionView.reloadData()
        }
     

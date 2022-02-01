@@ -11,10 +11,14 @@ import UIKit
 class LastResultCollectionViewCell: UICollectionViewCell {
     
     
+    @IBOutlet weak var teamName: UILabel!
     
     
+    @IBOutlet weak var teamScore: UILabel!
     
     
+    @IBOutlet weak var teamDate: UILabel!
     
+    @IBOutlet weak var teamTime: UILabel!
     
 }
