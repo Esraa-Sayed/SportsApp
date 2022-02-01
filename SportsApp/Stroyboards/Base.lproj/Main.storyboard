@@ -181,13 +181,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tqH-OG-Nyq">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" alpha="0.55000000000000004" contentMode="scaleToFill" restorationIdentifier="LeagueViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeagueViewCell" rowHeight="100" id="tqH-OG-Nyq" customClass="LeagueViewCell" customModule="SportsApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tqH-OG-Nyq" id="H2p-B1-U3d">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="GQZ-Du-o6X">
+                                            <rect key="frame" x="0.0" y="0.0" width="124" height="100"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V8 Supercars" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnc-W0-GAg">
+                                            <rect key="frame" x="140" y="40.5" width="222" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OD-II-qYm">
+                                            <rect key="frame" x="354" y="49" width="32" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="EKU-Ax-ymT"/>
+                                                <constraint firstAttribute="width" constant="32" id="OqG-DF-gmf"/>
+                                            </constraints>
+                                            <state key="normal" image="youtube (1)"/>
+                                            <connections>
+                                                <action selector="youTube:" destination="tqH-OG-Nyq" eventType="touchUpInside" id="wv9-OK-FKa"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="2OD-II-qYm" secondAttribute="trailing" constant="8" id="4S4-oE-X3D"/>
+                                        <constraint firstItem="tnc-W0-GAg" firstAttribute="centerY" secondItem="H2p-B1-U3d" secondAttribute="centerY" id="5aO-HH-5qC"/>
+                                        <constraint firstItem="GQZ-Du-o6X" firstAttribute="top" secondItem="H2p-B1-U3d" secondAttribute="top" id="JBb-z7-QST"/>
+                                        <constraint firstAttribute="bottom" secondItem="GQZ-Du-o6X" secondAttribute="bottom" id="Jqx-nw-wvI"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="2OD-II-qYm" secondAttribute="bottom" constant="8" id="YzO-UX-gt9"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="tnc-W0-GAg" secondAttribute="trailing" constant="32" id="od7-3O-CZ9"/>
+                                        <constraint firstItem="GQZ-Du-o6X" firstAttribute="leading" secondItem="H2p-B1-U3d" secondAttribute="leading" id="ypK-B2-3Xq"/>
+                                        <constraint firstItem="tnc-W0-GAg" firstAttribute="leading" secondItem="GQZ-Du-o6X" secondAttribute="trailing" constant="16" id="zIe-EN-oP9"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.31388238130000001" blue="0.3358581853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="GQZ-Du-o6X" firstAttribute="width" secondItem="tqH-OG-Nyq" secondAttribute="width" multiplier="0.3" id="pRZ-oz-ve9"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="leaguesImg" destination="GQZ-Du-o6X" id="RRc-8g-Dlu"/>
+                                    <outlet property="leaguesTitle" destination="tnc-W0-GAg" id="DJY-BE-Twt"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -201,13 +242,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="718-n8-JNY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3520" y="108"/>
+            <point key="canvasLocation" x="3518.840579710145" y="107.8125"/>
         </scene>
     </scenes>
     <resources>
         <image name="PlaceholderImg" width="96" height="96"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="suit.heart.fill" catalog="system" width="64" height="54"/>
+        <image name="youtube (1)" width="32" height="32"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.25224743030000002" blue="0.2699079949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

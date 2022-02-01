@@ -62,4 +62,10 @@ class AllLeaguesVCPresenter
     {
        Leagues.count
     }
+    func configure(cell:LeaguesViewCell ,forIndex: Int){
+        let league = Leagues[forIndex]
+        cell.displayImag(imagURL: league.strBadge ?? "https://i.pinimg.com/564x/ff/f4/ae/fff4ae3259e01a20794bfed0fbd1ed13.jpg")
+        cell.displayName(leaguesName: league.strLeague ?? "UnKnown")
+        cell.displayVideo(videoURL: league.strYoutube ?? "faild")
+    }
 }

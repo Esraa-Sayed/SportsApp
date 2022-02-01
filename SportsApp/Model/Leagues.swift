@@ -13,6 +13,7 @@ class Countrys:Decodable
     var strSport: String?
     var strYoutube:String?
     var strBadge:String?
+    var strLeague:String
 }
 class LeaguesResponse:Decodable
 {
