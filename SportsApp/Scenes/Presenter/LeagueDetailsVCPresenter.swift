@@ -60,16 +60,14 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
        
 
     
-    func loadLatestResults(id:String) {
-        latestResultsArray = dataSource.getLatestResults(id: id)
-        if latestResultsArray!.count == 0{
-            self.leagueDetailsView?.hideIndicator()
-            self.leagueDetailsView?.updateUIViewLatestResult(latestResult: latestResultsArray!)
-        }else{
-            self.leagueDetailsView?.hideIndicator()
-            print("error loading latestResults")
-        }
-
+    func loadLatestResults(id:String){
+     dataSource.getLatestResults(id: id, complitionHandler: { (result) in
+     self.latestResultsArray = result
+     self.leagueDetailsView?.hideIndicator()
+     self.leagueDetailsView?.updateUIViewLatestResult(latestResult: result!)
+     print(self.latestResultsArray?.count ?? 0)
+     })
+     self.leagueDetailsView?.refresh()
     }
     
     func getLatestResultsCount()->Int{
@@ -78,15 +76,13 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
     
    
     func loadTeams(id:String) {
-        teamsArray = dataSource.getTeam(id: id)
-        if teamsArray?.count == 0{
-            self.leagueDetailsView?.hideIndicator()
-            self.leagueDetailsView?.updateUIViewTeam(teams: teamsArray!)
-            //view controller func
-        }else{
-            self.leagueDetailsView?.hideIndicator()
-            print("error loading teams")
-        }
+     dataSource.getTeam(id: id, complitionHandler: { (result) in
+     self.teamsArray = result
+     self.leagueDetailsView?.hideIndicator()
+     self.leagueDetailsView?.updateUIViewTeam(teams: result!)
+     print(self.teamsArray?.count ?? 0)
+     })
+     self.leagueDetailsView?.refresh()
     }
     
     func getTeamsCount()->Int{

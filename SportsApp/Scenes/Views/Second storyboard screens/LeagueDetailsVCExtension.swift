@@ -48,4 +48,5 @@ extension LeagueDetailsViewController {
         Toast.showToast(controller: self, message : "No internet connection", seconds: 4.0)
     }
     
+
 }

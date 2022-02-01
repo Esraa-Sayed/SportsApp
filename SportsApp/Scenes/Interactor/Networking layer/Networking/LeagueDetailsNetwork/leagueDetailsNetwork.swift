@@ -12,8 +12,8 @@ import SwiftyJSON
 
 protocol EventDataSourceProtocol {
     func getEvents(id:String,complitionHandler : @escaping ([Event]?) -> Void)
-    func getLatestResults (id:String)->[Event]
-    func getTeam(id:String)->[Team]
+    func getLatestResults (id:String,complitionHandler : @escaping ([Event]?) -> Void)
+    func getTeam(id:String,complitionHandler : @escaping ([Team]?) -> Void)
     
 }
 
@@ -35,7 +35,6 @@ class EventDataSource : EventDataSourceProtocol {
                             let date = event[Constants.strDateEvent].stringValue
                             let time = event[Constants.strTimeEvent].stringValue
                             eventsArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time ))
-
                         }
                     }
                    complitionHandler(eventsArray)
@@ -44,7 +43,7 @@ class EventDataSource : EventDataSourceProtocol {
     }
     
     
-     func getLatestResults(id: String) ->[Event]{
+     func getLatestResults(id: String,complitionHandler : @escaping ([Event]?) -> Void){
             let url = "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id="+id
             var latestResultsArray = [Event]()
             Alamofire.request(url).response { response in
@@ -67,14 +66,13 @@ class EventDataSource : EventDataSourceProtocol {
                     }
                     
                 }
-                
+                complitionHandler(latestResultsArray)
                print(latestResultsArray.count)
             }
-        return latestResultsArray
         }
         
     
-    func getTeam(id : String)->[Team] {
+    func getTeam(id : String,complitionHandler : @escaping ([Team]?) -> Void) {
             let url = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l="
             var teamsArray = [Team]()
             Alamofire.request(url).response { response in
@@ -91,10 +89,9 @@ class EventDataSource : EventDataSourceProtocol {
                         teamsArray.append(Team(imageURL: url, ID: id))
                     }
                 }
-                
+                 complitionHandler(teamsArray)
                print(teamsArray.count)
             }
-        return teamsArray
         }
     
     
