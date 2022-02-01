@@ -39,10 +39,10 @@ class AllSportsVCPresenter
             view?.hideIndicator()
             return false;
         }
-       
+        
     }
     private func getSports() {
-       interactor.getSports { [weak self](result) in
+        interactor.getSports { [weak self](result) in
         self?.view?.hideIndicator()
             switch result{
             case .success(let response):

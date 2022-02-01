@@ -39,8 +39,4 @@ class LeagueViewCell: UITableViewCell,LeaguesViewCell {
     @IBAction func youTube(_ sender: UIButton) {
         
     }
-  
-    
-    
-
 }

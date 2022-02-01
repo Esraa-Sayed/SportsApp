@@ -10,7 +10,7 @@ import Foundation
 protocol LeaguesView :class {
     func showIndicator()
     func hideIndicator()
-   // func navigateToLeagueDetils()
+    func navigateToLeagueDetils(league:Country)
     func fetchingDataSuccess()
  
 }
@@ -23,7 +23,7 @@ class AllLeaguesVCPresenter
 {
     private weak var view: LeaguesView?
     private let interactor:LeaguesAPiProtocol = LeaguesAPi()
-    private var Leagues = [Countrys]()
+    private var Leagues = [Country]()
     private var sportName:String?
     func setSportName(sportName:String) {
         self.sportName = sportName
@@ -68,4 +68,9 @@ class AllLeaguesVCPresenter
         cell.displayName(leaguesName: league.strLeague ?? "UnKnown")
         cell.displayVideo(videoURL: league.strYoutube ?? "faild")
     }
+    func didSelectedRow(index:Int)
+       {
+           let league = Leagues[index]
+        view?.navigateToLeagueDetils(league: league)
+       }
 }

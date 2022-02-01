@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 extension TableLeaguesViewController:LeaguesView
 {
    func showIndicator() {
@@ -16,9 +17,13 @@ extension TableLeaguesViewController:LeaguesView
     func hideIndicator() {
          indicator?.stopAnimating()
     }
-  /*  func navigateToLeagueDetils() {
-        <#code#>
-    }*/
+    func navigateToLeagueDetils(league:Country) {
+        let storyboard = UIStoryboard(name: "SecondStoryboard", bundle: nil)
+        print(league.strLeague)
+        let VC = storyboard.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsViewController
+        
+        self.present(VC, animated: true, completion: nil)
+    }
     
     func fetchingDataSuccess() {
         myTable?.reloadData()
