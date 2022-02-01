@@ -38,6 +38,7 @@
 		8C04078B27A82DB1000E29BF /* leagueDetailsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C04078A27A82DB1000E29BF /* leagueDetailsNetwork.swift */; };
 		8C04078D27A83196000E29BF /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C04078C27A83196000E29BF /* Constans.swift */; };
 		8C95DE3827A939D000F9C217 /* LeagueDetailsVCPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C95DE3727A939D000F9C217 /* LeagueDetailsVCPresenter.swift */; };
+		8C95DE3A27A93EBE00F9C217 /* LeagueDetailsVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C95DE3927A93EBE00F9C217 /* LeagueDetailsVCExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		8C04078A27A82DB1000E29BF /* leagueDetailsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leagueDetailsNetwork.swift; sourceTree = "<group>"; };
 		8C04078C27A83196000E29BF /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		8C95DE3727A939D000F9C217 /* LeagueDetailsVCPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsVCPresenter.swift; sourceTree = "<group>"; };
+		8C95DE3927A93EBE00F9C217 /* LeagueDetailsVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsVCExtension.swift; sourceTree = "<group>"; };
 		C19F99ACEDB509AA4C1BBAAC /* Pods_SportsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C674BC1D38F685E78E9A50 /* Pods-SportsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApp.debug.xcconfig"; path = "Target Support Files/Pods-SportsApp/Pods-SportsApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -311,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				8C04077727A7E833000E29BF /* LeagueDetailsViewController.swift */,
+				8C95DE3927A93EBE00F9C217 /* LeagueDetailsVCExtension.swift */,
 			);
 			path = "Second storyboard screens";
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				8C04078227A80EB9000E29BF /* LeagueDetailsResponse.swift in Sources */,
 				0288475A27A747D6002894BE /* Sports.swift in Sources */,
 				02554FB927A2E0730069AC9F /* SceneDelegate.swift in Sources */,
+				8C95DE3A27A93EBE00F9C217 /* LeagueDetailsVCExtension.swift in Sources */,
 				02C5E4A427A8468B007835E7 /* CollectionFirstScreen.swift in Sources */,
 				0288475127A722B2002894BE /* BaseApi.swift in Sources */,
 				0288475627A7456A002894BE /* SportsApi.swift in Sources */,
