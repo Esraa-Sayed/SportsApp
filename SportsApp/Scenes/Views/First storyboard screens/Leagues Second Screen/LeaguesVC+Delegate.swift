@@ -11,17 +11,18 @@ import UIKit
 extension TableLeaguesViewController:LeaguesView
 {
    func showIndicator() {
-            indicator?.startAnimating()
+        indicator?.startAnimating()
+    
     }
     
     func hideIndicator() {
-         indicator?.stopAnimating()
+        indicator?.stopAnimating()
     }
     func navigateToLeagueDetils(league:Country) {
         let storyboard = UIStoryboard(name: "SecondStoryboard", bundle: nil)
         print(league.strLeague)
         let VC = storyboard.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsViewController
-        
+       // VC.league = league
         self.present(VC, animated: true, completion: nil)
     }
     

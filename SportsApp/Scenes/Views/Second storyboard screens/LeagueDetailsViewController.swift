@@ -17,10 +17,11 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     
     @IBOutlet weak var teamsCollectionView: UICollectionView!
     
-    var indicator :UIActivityIndicatorView?
+   let indicator = UIActivityIndicatorView(style: .large)
     var eventsArray:[Event]?
     var latestResultsArray:[Event]?
     var teamsArray:[Team]?
+    var league : Country ?
     
     var leagueDetailsProtocol:LeagueDetailsProtocol?
 
@@ -38,9 +39,20 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
               
         
        leagueDetailsProtocol = LeagueDetailsPresenter(view: self)
-       leagueDetailsProtocol?.loadEvents(id:"")
-       //leagueDetailsProtocol?.loadLatestResults(id: "")
-       leagueDetailsProtocol?.loadTeams(id: "")
+        
+        self.showIndicator()
+             if CheckInternetConnectivity.isConnectedToInternet {
+                 print("Yes! internet is available.")
+                 leagueDetailsProtocol?.loadEvents(id:"")
+                //leagueDetailsProtocol?.loadLatestResults(id: "")
+            //  leagueDetailsProtocol?.loadTeams(id: "")
+             }
+             else
+             {
+                 self.hideIndicator()
+                 self.alertMessage()
+      
+        }
                
     }
     
@@ -84,10 +96,10 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
            }
            else if collectionView == self.eventsCollectionView {
                let    cell = eventsCollectionView.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as! EventCollectionViewCell
-               cell.eventName.text = eventsArray![indexPath.row].eventName
-               cell.eventDate.text = eventsArray![indexPath.row].eventDate
+            cell.eventName.text = eventsArray?[indexPath.row].eventName  ?? ""
+            cell.eventDate.text = eventsArray![indexPath.row].eventDate.description
                cell.eventTime.text = eventsArray![indexPath.row].eventTime
-                print("cell events cell")
+            print(eventsArray![indexPath.row].eventDate.description)
                return cell
                
            }else  if collectionView == self.teamsCollectionView  {
@@ -98,7 +110,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
                 return cell
                
            }
-      
+
            return UICollectionViewCell()
        }
 

@@ -12,30 +12,37 @@ extension LeagueDetailsViewController {
    
     
     func showIndicator() {
-        indicator?.startAnimating()
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
+        indicator.startAnimating()
     }
     
     func hideIndicator() {
-         indicator?.stopAnimating()
+         indicator.stopAnimating()
     }
     
     func updateUIViewLatestResult(latestResult: [Event]) {
             print("updateUIViewLatestResult")
            latestResultsArray = latestResult
-          // latestResultsCollectionView.reloadData()
+           latestResultsCollectionView.reloadData()
        }
        
        func updateUIViewTeam(teams: [Team]) {
            teamsArray = teams
            print("updateUIViewTeam")
-          // teamsCollectionView.reloadData()
+          teamsCollectionView.reloadData()
        }
        
        func updateUIViewEvent(events: [Event]) {
-          // print("updateUIViewEvent")
            eventsArray = events
-          // eventsCollectionView.reloadData()
+           eventsCollectionView.reloadData()
        }
+    
+    func refresh (){
+        eventsCollectionView.reloadData()
+        teamsCollectionView.reloadData()
+        latestResultsCollectionView.reloadData()
+    }
     
     func alertMessage (){
         Toast.showToast(controller: self, message : "No internet connection", seconds: 4.0)

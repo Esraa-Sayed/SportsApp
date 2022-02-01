@@ -23,6 +23,7 @@ protocol LeagueDetailsViewProtocol :class {
     func updateUIViewEvent(events: [Event])
     func updateUIViewLatestResult(latestResult: [Event])
     func updateUIViewTeam(teams: [Team])
+     func refresh ()
     func alertMessage ()
  
 }
@@ -41,36 +42,16 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
        {
            self.leagueDetailsView = view
        }
-       func viewDidLoad()->Bool {
-            leagueDetailsView?.showIndicator()
-        if CheckInternetConnectivity.isConnectedToInternet {
-            print("Yes! internet is available.")
-            
-            return true;
-        }
-        else
-        {
-            leagueDetailsView?.hideIndicator()
-            leagueDetailsView?.alertMessage()
-            return false;
-        }
-          
-       }
+       
     
     func loadEvents(id:String) {
-        eventsArray = dataSource.getEvents(id: id, completion: {
-            self.leagueDetailsView?.hideIndicator()
+        dataSource.getEvents(id: id, complitionHandler: { (result) in
+        self.eventsArray = result
+        self.leagueDetailsView?.hideIndicator()
+        self.leagueDetailsView?.updateUIViewEvent(events: result!)
+        print(self.eventsArray?.count ?? 0)
         })
-        print(eventsArray?.count ?? 0)
-        if eventsArray?.count == 0{
-               self.leagueDetailsView?.hideIndicator()
-               self.leagueDetailsView?.updateUIViewEvent(events: eventsArray!)
-               //view controller func
-           }else{
-               self.leagueDetailsView?.hideIndicator()
-               print("error loading events")
-           }
-            print(eventsArray?.count ?? 0)
+        self.leagueDetailsView?.refresh()
        }
        
        func getEventsCount()->Int{
@@ -84,12 +65,10 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
         if latestResultsArray!.count == 0{
             self.leagueDetailsView?.hideIndicator()
             self.leagueDetailsView?.updateUIViewLatestResult(latestResult: latestResultsArray!)
-            //view controller func
         }else{
             self.leagueDetailsView?.hideIndicator()
             print("error loading latestResults")
         }
-       print(latestResultsArray?.count ?? 0)
 
     }
     
@@ -108,7 +87,6 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
             self.leagueDetailsView?.hideIndicator()
             print("error loading teams")
         }
-         print(teamsArray?.count ?? 0)
     }
     
     func getTeamsCount()->Int{
