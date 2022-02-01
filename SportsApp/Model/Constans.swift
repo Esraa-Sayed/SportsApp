@@ -30,7 +30,7 @@ enum Constants {
     static let EVENTS = "event"
    static let  idEvent = "idEvent"
     static let strEvent = "strEvent"
-    static let strDateEvent = "strDate"
+    static let strDateEvent = "dateEvent"
     static let strTimeEvent = "strTime"
     static let intAwayScore = "intAwayScore"
      static let intHomeScore = "intHomeScore"
