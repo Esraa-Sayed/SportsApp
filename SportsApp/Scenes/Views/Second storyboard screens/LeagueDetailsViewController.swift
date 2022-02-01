@@ -8,8 +8,14 @@
 
 import UIKit
 
-class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol/*,UICollectionViewDataSource , UICollectionViewDelegate */ {
+class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,UICollectionViewDataSource , UICollectionViewDelegate  {
+   
     
+    @IBOutlet weak var eventsCollectionView: UICollectionView!
+    
+    @IBOutlet weak var latestResultsCollectionView: UICollectionView!
+    
+    @IBOutlet weak var teamsCollectionView: UICollectionView!
     var indicator :UIActivityIndicatorView?
     var eventssArray:[Event]?
     var latestResultsArray:[Event]?
@@ -17,11 +23,16 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol/*
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+           <#code#>
+       }
+       
+       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+           <#code#>
+       }
 
   
 }

@@ -23,6 +23,7 @@ protocol LeagueDetailsViewProtocol :class {
     func updateUIViewEvent(events: [Event])
     func updateUIViewLatestResult(latestResult: [Event])
     func updateUIViewTeam(teams: [Team])
+    func alertMessage ()
  
 }
 
@@ -52,6 +53,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
         else
         {
             leagueDetailsView?.hideIndicator()
+            leagueDetailsView?.alertMessage()
             return false;
         }
           

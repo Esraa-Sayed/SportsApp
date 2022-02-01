@@ -37,5 +37,8 @@ extension LeagueDetailsViewController {
           // eventsCollectionView.reloadData()
        }
     
+    func alertMessage (){
+        Toast.showToast(controller: self, message : "No internet connection", seconds: 4.0)
+    }
     
 }
