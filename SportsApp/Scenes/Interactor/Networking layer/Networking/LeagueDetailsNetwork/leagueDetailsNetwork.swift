@@ -9,7 +9,16 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-class EventDataSource {
+
+protocol EventDataSourceProtocol {
+    func getEvents(id:String)
+    func getLatestResults (id:String)
+    func getTeam()
+    
+}
+
+
+class EventDataSource : EventDataSourceProtocol {
     
     func getEvents(id: String) {
         let url = "https://www.thesportsdb.com/api/v1/json/2/searchevents.php?e="+id
@@ -68,8 +77,8 @@ class EventDataSource {
             }
         }
         
-        func getTeam(id:String) {
-            let url = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l="+id
+        func getTeam() {
+            let url = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l="
             var teamsArray = [Team]()
             Alamofire.request(url).response { response in
                 
@@ -83,15 +92,11 @@ class EventDataSource {
                         let url = team[Constants.strTeamBadge].stringValue
                       
                         teamsArray.append(Team(imageURL: url, ID: id))
-                        
-            
                     }
-                   
                 }
                 
                print(teamsArray.count)
-                
-                debugPrint(response.data)
+               debugPrint(response.data)
             }
         }
     
