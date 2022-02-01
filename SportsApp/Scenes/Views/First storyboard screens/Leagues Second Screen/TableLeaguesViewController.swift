@@ -24,7 +24,7 @@ class TableLeaguesViewController: UITableViewController {
         presenter.setSportName(sportName: sportName)
        if !presenter.viewDidLoad()
        {
-           Toast.showToast(controller: self, message : "No internet connection", seconds: 4.0)
+           Toast.showToast(controller: self, message : "No internet connection", seconds: 2.0)
        }
         
     }
@@ -41,8 +41,8 @@ class TableLeaguesViewController: UITableViewController {
         return 1
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueViewCell", for: indexPath) as! LeagueViewCell
-        presenter.configure(cell: cell, forIndex: indexPath.section)
+        var cell = tableView.dequeueReusableCell(withIdentifier: "LeagueViewCell", for: indexPath) as! LeagueViewCell
+        presenter.configure(cell: &cell, forIndex: indexPath.section)
         let verticalPadding: CGFloat = 8
 
         let maskLayer = CALayer()

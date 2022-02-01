@@ -9,6 +9,7 @@
 import UIKit
 
 class LeagueViewCell: UITableViewCell,LeaguesViewCell {
+    var youtubePressed: (() -> (String))?
     func displayImag(imagURL: String) {
         leaguesImg.kf.setImage(with: URL(string: imagURL),placeholder: UIImage(named: "PlaceholderImg"))
         leaguesImg.layer.cornerRadius = 15
@@ -20,23 +21,49 @@ class LeagueViewCell: UITableViewCell,LeaguesViewCell {
         leaguesTitle?.text = leaguesName
     }
     
-    func displayVideo(videoURL: String) {
-        
-    }
-    
     @IBOutlet weak var leaguesTitle: UILabel!
     @IBOutlet weak var leaguesImg: UIImageView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBAction func youTube(_ sender: UIButton)
+    {
+        var youtube:String = (youtubePressed?())!
+        if CheckInternetConnectivity.isConnectedToInternet {
+               if youtube.isEmpty
+              {
+                  Toast.showToast(controller: parentViewController!, message: "No link found", seconds: 2)
+              }
+              else
+              {
+                  //Go to youtube
+                   let appURL =  NSURL(string:"youtube://"+youtube)
+                   let webURL =  NSURL(string:"https://"+youtube)
+                   let application = UIApplication.shared
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+                if application.canOpenURL(appURL! as URL) {
+                    application.open(appURL! as URL)
+                   } else {
+                       // if Youtube app is not installed, open URL inside Safari
+                    application.open(webURL! as URL)
+                   }
+              }
+        }
+        else
+        {
+            Toast.showToast(controller: parentViewController!, message: "No internet connection", seconds: 2)
+        }
     }
-    @IBAction func youTube(_ sender: UIButton) {
-        
+}
+extension LeagueViewCell {
+    var parentViewController: UIViewController?
+    {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil
+        {
+            parentResponder = parentResponder!.next
+            if let viewController = parentResponder as? UIViewController
+            {
+                return viewController
+            }
+        }
+        return nil
     }
 }
