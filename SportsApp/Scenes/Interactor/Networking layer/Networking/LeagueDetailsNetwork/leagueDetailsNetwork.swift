@@ -11,18 +11,18 @@ import Alamofire
 import SwiftyJSON
 
 protocol EventDataSourceProtocol {
-    func getEvents(id:String)
-    func getLatestResults (id:String)
-    func getTeam()
+    func getEvents(id:String)->[Event]
+    func getLatestResults (id:String)->[Event]
+    func getTeam(id:String)->[Team]
     
 }
 
 
 class EventDataSource : EventDataSourceProtocol {
     
-    func getEvents(id: String) {
+    func getEvents(id: String)->[Event] {
         let url = "https://www.thesportsdb.com/api/v1/json/2/searchevents.php?e="+id
-        var eventssArray = [Event]()
+        var eventsArray = [Event]()
         Alamofire.request(url).response { response in
 
                     if let data = response.data {
@@ -38,16 +38,19 @@ class EventDataSource : EventDataSourceProtocol {
                             let date = event[Constants.strDateEvent].stringValue
                             let time = event[Constants.strTimeEvent].stringValue
                             print(name)
-                            eventssArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time ))
+                            eventsArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time ))
 
                         }
 
                     }
-                    print(eventssArray.count)
+                    print(eventsArray.count)
                     debugPrint(response.data)
                 }
+        return eventsArray
     }
-     func getLatestResults(id: String) {
+    
+    
+     func getLatestResults(id: String) ->[Event]{
             let url = "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id="+id
             var latestResultsArray = [Event]()
             Alamofire.request(url).response { response in
@@ -75,9 +78,11 @@ class EventDataSource : EventDataSourceProtocol {
                 
                 debugPrint(response.data)
             }
+        return latestResultsArray
         }
         
-        func getTeam() {
+    
+    func getTeam(id : String)->[Team] {
             let url = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l="
             var teamsArray = [Team]()
             Alamofire.request(url).response { response in
@@ -98,6 +103,7 @@ class EventDataSource : EventDataSourceProtocol {
                print(teamsArray.count)
                debugPrint(response.data)
             }
+        return teamsArray
         }
     
     
