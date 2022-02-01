@@ -21,7 +21,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     var eventsArray:[Event]?
     var latestResultsArray:[Event]?
     var teamsArray:[Team]?
-    var league : Country ?
+    var league : Country?
     
     var leagueDetailsProtocol:LeagueDetailsProtocol?
 
@@ -37,7 +37,8 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
         self.teamsCollectionView.delegate = self
         self.teamsCollectionView.dataSource = self
               
-        
+        print(league!.strLeague)
+
        leagueDetailsProtocol = LeagueDetailsPresenter(view: self)
         
         self.showIndicator()
@@ -97,9 +98,9 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
            else if collectionView == self.eventsCollectionView {
                let    cell = eventsCollectionView.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as! EventCollectionViewCell
             cell.eventName.text = eventsArray?[indexPath.row].eventName  ?? ""
-            cell.eventDate.text = eventsArray![indexPath.row].eventDate.description
+         //   cell.eventDate.text = eventsArray![indexPath.row].eventDate
                cell.eventTime.text = eventsArray![indexPath.row].eventTime
-            print(eventsArray![indexPath.row].eventDate.description)
+            print(eventsArray![indexPath.row].eventDate)
                return cell
                
            }else  if collectionView == self.teamsCollectionView  {

@@ -22,7 +22,7 @@ extension TableLeaguesViewController:LeaguesView
         let storyboard = UIStoryboard(name: "SecondStoryboard", bundle: nil)
         print(league.strLeague)
         let VC = storyboard.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsViewController
-       // VC.league = league
+        VC.league = league
         self.present(VC, animated: true, completion: nil)
     }
     
