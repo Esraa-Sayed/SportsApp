@@ -35,7 +35,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sen-Iy-QDI">
                                             <rect key="frame" x="0.0" y="148" width="180" height="32"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Q7-8K-gEs">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Q7-8K-gEs">
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -191,8 +191,8 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="GQZ-Du-o6X">
                                             <rect key="frame" x="16" y="8" width="83" height="84"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V8 Supercars" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnc-W0-GAg">
-                                            <rect key="frame" x="107" y="27" width="102.5" height="19.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V8 Supercars" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnc-W0-GAg">
+                                            <rect key="frame" x="107" y="27" width="242" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.25224743030000002" blue="0.2699079949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -211,6 +211,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="2OD-II-qYm" secondAttribute="trailing" constant="8" id="4S4-oE-X3D"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="tnc-W0-GAg" secondAttribute="trailing" constant="45" id="GXw-bc-KKg"/>
                                         <constraint firstItem="GQZ-Du-o6X" firstAttribute="top" secondItem="H2p-B1-U3d" secondAttribute="top" constant="8" id="JBb-z7-QST"/>
                                         <constraint firstAttribute="bottom" secondItem="GQZ-Du-o6X" secondAttribute="bottom" constant="8" id="Jqx-nw-wvI"/>
                                         <constraint firstItem="tnc-W0-GAg" firstAttribute="leading" secondItem="GQZ-Du-o6X" secondAttribute="trailing" constant="8" id="RzI-Py-Dxk"/>
