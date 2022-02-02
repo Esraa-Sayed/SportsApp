@@ -15,7 +15,7 @@ protocol LeagueDetailsProtocol {
     func getLatestResultsCount()->Int
     func loadTeams(id:String)
     func  getTeamsCount() -> Int
-     func viewDidLoad(leagueName : String)->Bool 
+     func viewDidLoad(league : Country)->Bool 
     
     
    }
@@ -45,14 +45,15 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
            self.leagueDetailsView = view
        }
        
-    func viewDidLoad(leagueName : String)->Bool {
+    func viewDidLoad(league: Country)->Bool {
          leagueDetailsView?.showIndicator()
         if CheckInternetConnectivity.isConnectedToInternet {
             print("Yes! internet is available.")
-            loadEvents(id:"")
-            loadLatestResults(id:leagueName)
-            print(leagueName)
-            loadTeams(id: "English%20Premier%20League")
+          
+           loadEvents(id:league.idLeague!)
+           loadLatestResults(id:league.idLeague!)
+           loadTeams(id: "English%20Premier%20League")
+            print(league.idLeague!)
             return true;
         }
         else
@@ -69,8 +70,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
         dataSource.getEvents(id: id, complitionHandler: { (result) in
         self.eventsArray = result
         self.leagueDetailsView?.hideIndicator()
-        self.leagueDetailsView?.updateUIViewEvent(events: result!)
-        print(self.eventsArray?.count ?? 0)
+        self.leagueDetailsView?.updateUIViewEvent(events: self.eventsArray!)
         })
         self.leagueDetailsView?.refresh()
        }
@@ -86,7 +86,6 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
      self.latestResultsArray = result
      self.leagueDetailsView?.hideIndicator()
      self.leagueDetailsView?.updateUIViewLatestResult(latestResult: result!)
-     print(self.latestResultsArray?.count ?? 0)
      })
      self.leagueDetailsView?.refresh()
     }
@@ -101,7 +100,6 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
      self.teamsArray = result
      self.leagueDetailsView?.hideIndicator()
      self.leagueDetailsView?.updateUIViewTeam(teams: result!)
-     print(self.teamsArray?.count ?? 0)
      })
      self.leagueDetailsView?.refresh()
     }

@@ -13,10 +13,10 @@ class Event : Decodable {
     var eventName : String
     var eventDate : String
     var eventTime : String
-    var intHomeScore : Int?
-    var intAwayScore : Int?
+    var intHomeScore : String
+    var intAwayScore : String
     
-    init(ID:Int , eventName : String , eventDate : String , eventTime : String ,intHomeScore : Int ,  intAwayScore : Int ) {
+    init(ID:Int , eventName : String , eventDate : String , eventTime : String ,intHomeScore : String ,  intAwayScore : String ) {
         self.ID = ID
         self.eventName = eventName
         self.eventDate = eventDate
@@ -25,13 +25,4 @@ class Event : Decodable {
         self.intAwayScore = intAwayScore
     }
     
-   init(ID:Int , eventName : String , eventDate : String , eventTime : String ) {
-        self.ID = ID
-        self.eventName = eventName
-        self.eventDate = eventDate
-        self.eventTime = eventTime
-    }
-    
-
-
 }

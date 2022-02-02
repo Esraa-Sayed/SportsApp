@@ -51,7 +51,8 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
         self.teamsCollectionView.delegate = self
         self.teamsCollectionView.dataSource = self
        
-        checkNet = leaguePresenter!.viewDidLoad(leagueName: league!.strLeague)
+        checkNet = leaguePresenter!.viewDidLoad(league: league!)
+        
                
     }
    
@@ -91,7 +92,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
                    + " VS " + String (describing: latestResultsArray![indexPath.row].intAwayScore )
                cell.teamDate.text = latestResultsArray![indexPath.row].eventDate
                cell.teamTime.text = latestResultsArray![indexPath.row].eventTime
-               print("cell latest result")
+               print(cell.teamScore.text)
                return cell
            }
            else if collectionView == self.eventsCollectionView {
@@ -100,13 +101,12 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
             cell.eventName.text = eventsArray?[indexPath.row].eventName  ?? ""
             cell.eventDate.text = eventsArray![indexPath.row].eventDate
             cell.eventTime.text = eventsArray![indexPath.row].eventTime
-            print(eventsArray![indexPath.row].eventDate)
                return cell
                
            }else  if collectionView == self.teamsCollectionView  {
                  let  cell = teamsCollectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamCollectionViewCell
                cell.teamImage.kf.indicatorType = .activity
-            cell.teamImage.kf.setImage(with: URL(string: teamsArray![indexPath.row].teamImage!))
+            cell.teamImage.kf.setImage(with: URL(string: teamsArray![indexPath.row].teamImage!),placeholder: UIImage(named: "PlaceholderImg"))
                 return cell
                
            }

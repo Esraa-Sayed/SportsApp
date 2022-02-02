@@ -17,12 +17,13 @@ protocol EventDataSourceProtocol {
     
 }
 
-
+//https://www.thesportsdb.com/api/v1/json/2/searchevents.php?e=
+//https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id=
 class EventDataSource : EventDataSourceProtocol {
     
     
     func getEvents(id: String,complitionHandler : @escaping ([Event]?) -> Void) {
-        let url = "https://www.thesportsdb.com/api/v1/json/2/searchevents.php?e="+id
+        let url = "https://www.thesportsdb.com/api/v1/json/2/searchevents.php?e="
         var eventsArray = [Event]()
         Alamofire.request(url).response { response in
 
@@ -34,7 +35,11 @@ class EventDataSource : EventDataSourceProtocol {
                             let name = event[Constants.strEvent].stringValue
                             let date = event[Constants.strDateEvent].stringValue
                             let time = event[Constants.strTimeEvent].stringValue
-                            eventsArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time ))
+                            let intHomeScore = event[Constants.intHomeScore].stringValue
+                            let intAwayScore = event[Constants.intAwayScore].stringValue
+                            if intAwayScore == ""{
+                                 eventsArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time , intHomeScore: intHomeScore  , intAwayScore: intAwayScore ))
+                            }
                         }
                     }
                    complitionHandler(eventsArray)
@@ -44,7 +49,7 @@ class EventDataSource : EventDataSourceProtocol {
     
     
      func getLatestResults(id: String,complitionHandler : @escaping ([Event]?) -> Void){
-            let url = "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id="+id
+            let url = "https://www.thesportsdb.com/api/v1/json/2/searchevents.php?e="
             var latestResultsArray = [Event]()
             Alamofire.request(url).response { response in
                 
@@ -59,15 +64,16 @@ class EventDataSource : EventDataSourceProtocol {
                         let name = result[Constants.strEvent].stringValue
                         let date = result[Constants.strDateEvent].stringValue
                         let time = result[Constants.strTimeEvent].stringValue
-                        let intHomeScore = result[Constants.strTimeEvent].int
-                        let intAwayScore = result[Constants.strTimeEvent].int
-                        latestResultsArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time , intHomeScore: intHomeScore ?? 0 , intAwayScore: intAwayScore ?? 0))
-                   
+                        let intHomeScore = result[Constants.intHomeScore].stringValue
+                        let intAwayScore = result[Constants.intAwayScore].stringValue
+                        if intAwayScore != ""{
+                        latestResultsArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time , intHomeScore: intHomeScore, intAwayScore: intAwayScore))
+                        }
                     }
                     
                 }
                 complitionHandler(latestResultsArray)
-               print(latestResultsArray.count)
+                print(latestResultsArray.count)
             }
         }
         
