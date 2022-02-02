@@ -25,30 +25,34 @@ class LeagueViewCell: UITableViewCell,LeaguesViewCell {
     @IBOutlet weak var leaguesImg: UIImageView!
     @IBAction func youTube(_ sender: UIButton)
     {
-        var youtube:String = (youtubePressed?())!
-        if CheckInternetConnectivity.isConnectedToInternet {
-               if youtube.isEmpty
-              {
-                  Toast.showToast(controller: parentViewController!, message: "No link found", seconds: 2)
-              }
-              else
-              {
-                  //Go to youtube
-                   let appURL =  NSURL(string:"youtube://"+youtube)
-                   let webURL =  NSURL(string:"https://"+youtube)
-                   let application = UIApplication.shared
-
-                if application.canOpenURL(appURL! as URL) {
-                    application.open(appURL! as URL)
-                   } else {
-                       // if Youtube app is not installed, open URL inside Safari
-                    application.open(webURL! as URL)
-                   }
-              }
+        let result:String = (youtubePressed?())!
+        if(result ==  "No internet connection")
+        {
+            Toast.showToast(controller: parentViewController!, message: "No internet connection" , seconds: 2)
+                      
         }
         else
         {
-            Toast.showToast(controller: parentViewController!, message: "No internet connection", seconds: 2)
+            if(result == "No link found")
+            {
+                Toast.showToast(controller: parentViewController!, message: "No link found", seconds: 2)
+            }
+            else
+            {
+                //Go to youtube
+                  let appURL =  NSURL(string:"youtube://"+result)
+                  let webURL =  NSURL(string:"https://"+result)
+                  let application = UIApplication.shared
+
+                   if application.canOpenURL(appURL! as URL)
+                   {
+                       application.open(appURL! as URL)
+                      }
+                   else {
+                          // if Youtube app is not installed, open URL inside Safari
+                       application.open(webURL! as URL)
+                      }
+            }
         }
     }
 }

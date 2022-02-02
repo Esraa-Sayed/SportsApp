@@ -68,7 +68,21 @@ class AllLeaguesVCPresenter
         cell.displayName(leaguesName: league.strLeague )
         cell.youtubePressed =
             {
-                return (league.strYoutube ?? "fail")
+                var youtube = league.strYoutube
+                if CheckInternetConnectivity.isConnectedToInternet {
+                    if youtube!.isEmpty
+                      {
+                          return "No link found"
+                      }
+                      else
+                      {
+                         return youtube!
+                    }
+                }
+                else
+                {
+                    return "No internet connection"
+                }
         }
     }
     func didSelectedRow(index:Int)
