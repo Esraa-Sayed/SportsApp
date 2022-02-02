@@ -31,18 +31,18 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="League Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfu-0N-ym0">
-                                        <rect key="frame" x="139.33333333333337" y="48" width="135.66666666666663" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <rect key="frame" x="152" y="52" width="111.33333333333334" height="19.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.25224743030000002" blue="0.2699079949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.66446382705479456" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" red="0.0" green="0.25224743030000002" blue="0.2699079949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69170055650684936" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="32T-7W-Ajt" firstAttribute="leading" secondItem="ih7-n1-ZgQ" secondAttribute="leading" constant="14" id="7eL-QG-IHe"/>
                                     <constraint firstItem="mfu-0N-ym0" firstAttribute="centerX" secondItem="ih7-n1-ZgQ" secondAttribute="centerX" id="L5K-Q4-O8l"/>
-                                    <constraint firstItem="mfu-0N-ym0" firstAttribute="top" secondItem="ih7-n1-ZgQ" secondAttribute="top" constant="48" id="a1i-Kq-lS6"/>
+                                    <constraint firstItem="mfu-0N-ym0" firstAttribute="top" secondItem="ih7-n1-ZgQ" secondAttribute="top" constant="52" id="a1i-Kq-lS6"/>
                                     <constraint firstItem="32T-7W-Ajt" firstAttribute="top" secondItem="ih7-n1-ZgQ" secondAttribute="top" constant="52" id="yrx-dm-aEO"/>
                                 </constraints>
                             </view>
