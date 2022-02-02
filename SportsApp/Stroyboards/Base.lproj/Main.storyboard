@@ -81,16 +81,16 @@
             </objects>
             <point key="canvasLocation" x="2639.130434782609" y="107.8125"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Table Favourite LeagueVC-->
         <scene sceneID="WW2-Fv-9Vc">
             <objects>
-                <tableViewController id="b3m-FM-gx2" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TableFavouriteLeagueVC" id="b3m-FM-gx2" customClass="TableFavouriteLeagueVC" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vNd-a4-aXD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wCJ-Hp-ZQq">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FavouriteLeaguesViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavouriteLeaguesViewCell" id="wCJ-Hp-ZQq" customClass="FavouriteLeaguesViewCell" customModule="SportsApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wCJ-Hp-ZQq" id="4WU-Vc-Do5">
