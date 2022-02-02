@@ -15,6 +15,7 @@ protocol LeagueDetailsProtocol {
     func getLatestResultsCount()->Int
     func loadTeams(id:String)
     func  getTeamsCount() -> Int
+     func viewDidLoad(leagueName : String)->Bool 
     
     
    }
@@ -23,7 +24,7 @@ protocol LeagueDetailsViewProtocol :class {
     func hideIndicator()
     func updateUIViewEvent(events: [Event])
     func updateUIViewLatestResult(latestResult: [Event])
-    func updateUIViewTeam(teams: [Team])
+    func updateUIViewTeam(teams: [TeamDetailsModel])
      func refresh ()
     func alertMessage ()
  
@@ -37,13 +38,31 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
     var dataSource = EventDataSource()
     var eventsArray : [Event]?
     var latestResultsArray : [Event]?
-    var teamsArray : [Team]?
+    var teamsArray : [TeamDetailsModel]?
 
     init(view:LeagueDetailsViewProtocol)
        {
            self.leagueDetailsView = view
        }
        
+    func viewDidLoad(leagueName : String)->Bool {
+         leagueDetailsView?.showIndicator()
+        if CheckInternetConnectivity.isConnectedToInternet {
+            print("Yes! internet is available.")
+            loadEvents(id:"")
+            loadLatestResults(id:leagueName)
+            print(leagueName)
+            loadTeams(id: "English%20Premier%20League")
+            return true;
+        }
+        else
+        {
+            
+            leagueDetailsView?.hideIndicator()
+            return false;
+        }
+       
+    }
     
     
     func loadEvents(id:String) {

@@ -27,7 +27,7 @@ extension LeagueDetailsViewController {
            latestResultsCollectionView.reloadData()
        }
        
-       func updateUIViewTeam(teams: [Team]) {
+       func updateUIViewTeam(teams: [TeamDetailsModel]) {
            teamsArray = teams
            print("updateUIViewTeam")
           teamsCollectionView.reloadData()

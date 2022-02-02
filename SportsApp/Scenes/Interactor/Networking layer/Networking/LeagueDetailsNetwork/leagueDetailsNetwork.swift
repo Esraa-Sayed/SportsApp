@@ -13,7 +13,7 @@ import SwiftyJSON
 protocol EventDataSourceProtocol {
     func getEvents(id:String,complitionHandler : @escaping ([Event]?) -> Void)
     func getLatestResults (id:String,complitionHandler : @escaping ([Event]?) -> Void)
-    func getTeam(id:String,complitionHandler : @escaping ([Team]?) -> Void)
+    func getTeam(id:String,complitionHandler : @escaping ([TeamDetailsModel]?) -> Void)
     
 }
 
@@ -72,9 +72,9 @@ class EventDataSource : EventDataSourceProtocol {
         }
         
     
-    func getTeam(id : String,complitionHandler : @escaping ([Team]?) -> Void) {
+    func getTeam(id : String,complitionHandler : @escaping ([TeamDetailsModel]?) -> Void) {
             let url = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l="+id
-            var teamsArray = [Team]()
+            var teamsArray = [TeamDetailsModel]()
             Alamofire.request(url).response { response in
                 
                 if let data = response.data {
@@ -84,9 +84,24 @@ class EventDataSource : EventDataSourceProtocol {
                     for team in teams {
                         let id = team[Constants.idTeam].intValue
                         
-                        let url = team[Constants.strTeamBadge].stringValue
+                        let logo = team[Constants.strTeamBadge].stringValue
+                        
+                        let name = team[Constants.strTeam].stringValue
+                        
+                        let countryName = team[Constants.strCountry].stringValue
+                        
+                        let formedYear = team[Constants.intFormedYear].stringValue
+
+                        let stadiumImage = team[Constants.strStadiumThumb].stringValue
+
+                        let stadiumName = team[Constants.strStadium].stringValue
+
+                        let stadiumLocation = team[Constants.strStadiumLocation].stringValue
+
+                        let leagueName = team[Constants.strLeague].stringValue
+
                       
-                        teamsArray.append(Team(imageURL: url, ID: id))
+                        teamsArray.append(TeamDetailsModel(teamID: id, teamName: name, countryTeam: countryName, formedYear: formedYear, leagueName: leagueName, teamImage: logo, stadiumImage: stadiumImage, stadiumName: stadiumName, stadiumLocation: stadiumLocation))
                     }
                 }
                  complitionHandler(teamsArray)

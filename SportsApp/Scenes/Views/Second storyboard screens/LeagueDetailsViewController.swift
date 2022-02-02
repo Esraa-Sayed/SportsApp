@@ -22,17 +22,26 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     
     @IBOutlet weak var teamsCollectionView: UICollectionView!
     
+    public var leaguePresenter : LeagueDetailsPresenter?
+
    let indicator = UIActivityIndicatorView(style: .large)
     var eventsArray:[Event]?
     var latestResultsArray:[Event]?
-    var teamsArray:[Team]?
+    var teamsArray:[TeamDetailsModel]?
     var league : Country?
+    var checkNet :Bool?
     
-    var leaguePresenter:LeagueDetailsProtocol?
+    override func viewDidAppear(_ animated: Bool) {
+        if !(checkNet!) {
+             Toast.showToast(controller: self, message : "No internet connection", seconds: 4.0)
+        }
+    }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        leaguePresenter = LeagueDetailsPresenter(view:self )
+        
         self.eventsCollectionView.delegate = self
         self.eventsCollectionView.dataSource = self
               
@@ -41,26 +50,8 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
               
         self.teamsCollectionView.delegate = self
         self.teamsCollectionView.dataSource = self
-              
-        
-        
-
-       leaguePresenter = LeagueDetailsPresenter(view: self)
-        
-        self.showIndicator()
-             if CheckInternetConnectivity.isConnectedToInternet {
-                 print("Yes! internet is available.")
-                leaguePresenter?.loadEvents(id:"")
-                leaguePresenter?.loadLatestResults(id:league!.strLeague)
-                print(league!.strLeague)
-                leaguePresenter?.loadTeams(id: "")
-             }
-             else
-             {
-                 self.hideIndicator()
-                 self.alertMessage()
-      
-        }
+       
+        checkNet = leaguePresenter!.viewDidLoad(leagueName: league!.strLeague)
                
     }
    
@@ -115,7 +106,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
            }else  if collectionView == self.teamsCollectionView  {
                  let  cell = teamsCollectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamCollectionViewCell
                cell.teamImage.kf.indicatorType = .activity
-               cell.teamImage.kf.setImage(with: URL(string: teamsArray![indexPath.row].imageURL))
+            cell.teamImage.kf.setImage(with: URL(string: teamsArray![indexPath.row].teamImage!))
                 return cell
                
            }
