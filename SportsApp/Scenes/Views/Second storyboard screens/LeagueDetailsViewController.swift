@@ -92,7 +92,6 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
                    + " VS " + String (describing: latestResultsArray![indexPath.row].intAwayScore )
                cell.teamDate.text = latestResultsArray![indexPath.row].eventDate
                cell.teamTime.text = latestResultsArray![indexPath.row].eventTime
-               print(cell.teamScore.text)
                return cell
            }
            else if collectionView == self.eventsCollectionView {
