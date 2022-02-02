@@ -25,6 +25,24 @@ class CollectionFirstScreen: UICollectionViewController {
         {
             Toast.showToast(controller: self, message : "No internet connection", seconds: 4.0)
         }
+        
+        
+        //coreDataInsert
+        var data:DataOfFavLeague = DataOfFavLeague()
+        data.idLeague = "4617"
+        data.strSport = "Soccer"
+        data.strLeague = "Albanian Superliga"
+        data.strYoutube = ""
+        data.strBadge = "https://www.thesportsdb.com/images/media/league/badge/6my1u31578828133.png"
+        var coreData:CoreDataServices = CoreDataServices()
+        coreData.insertfavouriteLeague(league: data)
+        /*
+         idLeague: "4617"
+         strSport: "Soccer"
+         strLeague: "Albanian Superliga"
+         strYoutube: ""
+         strBadge: "https://www.thesportsdb.com/images/media/league/badge/6my1u31578828133.png"
+         */
     }
 
     // MARK: UICollectionViewDataSource

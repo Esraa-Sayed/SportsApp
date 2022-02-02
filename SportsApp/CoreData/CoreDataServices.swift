@@ -16,7 +16,7 @@ class CoreDataServices
         let appDelegte = UIApplication.shared.delegate as! AppDelegate
         manageContext = appDelegte.persistentContainer.viewContext
     }
-    func insertfavouriteLeague(league:Country)
+    func insertfavouriteLeague(league:DataOfFavLeague)
     {
         let entity = NSEntityDescription.entity(forEntityName: "FavouriteLeagues", in: manageContext!)
         let leagueAttr = NSManagedObject(entity: entity!, insertInto: manageContext)

@@ -26,6 +26,7 @@ class TableLeaguesViewController: UITableViewController {
        {
            Toast.showToast(controller: self, message : "No internet connection", seconds: 2.0)
        }
+        //viewInCell.layer.cornerRadius = 10
         
     }
 
@@ -44,12 +45,12 @@ class TableLeaguesViewController: UITableViewController {
         var cell = tableView.dequeueReusableCell(withIdentifier: "LeagueViewCell", for: indexPath) as! LeagueViewCell
         presenter.configure(cell: &cell, forIndex: indexPath.section)
         let verticalPadding: CGFloat = 8
-
-        let maskLayer = CALayer()
+        cell.ViewInCell.layer.cornerRadius = 8
+        /*let maskLayer = CALayer()
         maskLayer.cornerRadius = 8   //if you want round edges
         maskLayer.backgroundColor = UIColor.black.cgColor
         maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
-        cell.layer.mask = maskLayer
+        cell.layer.mask = maskLayer*/
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -10,17 +10,7 @@ import UIKit
 
 class LeagueViewCell: UITableViewCell,LeaguesViewCell {
     var youtubePressed: (() -> (String))?
-    func displayImag(imagURL: String) {
-        leaguesImg.kf.setImage(with: URL(string: imagURL),placeholder: UIImage(named: "PlaceholderImg"))
-        leaguesImg.layer.cornerRadius = 15
-        leaguesImg.layer.masksToBounds = true
-        leaguesImg.layer.cornerRadius = 5
-    }
-    
-    func displayName(leaguesName: String) {
-        leaguesTitle?.text = leaguesName
-    }
-    
+    @IBOutlet weak var ViewInCell: UIView!
     @IBOutlet weak var leaguesTitle: UILabel!
     @IBOutlet weak var leaguesImg: UIImageView!
     @IBAction func youTube(_ sender: UIButton)
@@ -70,4 +60,15 @@ extension LeagueViewCell {
         }
         return nil
     }
+    func displayImag(imagURL: String) {
+        leaguesImg.kf.setImage(with: URL(string: imagURL),placeholder: UIImage(named: "PlaceholderImg"))
+        leaguesImg.layer.cornerRadius = 15
+        leaguesImg.layer.masksToBounds = true
+        leaguesImg.layer.cornerRadius = 5
+    }
+    
+    func displayName(leaguesName: String) {
+        leaguesTitle?.text = leaguesName
+    }
+    
 }

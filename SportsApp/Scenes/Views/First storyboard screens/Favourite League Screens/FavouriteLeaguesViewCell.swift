@@ -9,7 +9,12 @@
 import UIKit
 
 class FavouriteLeaguesViewCell: UITableViewCell {
+    @IBOutlet weak var favouriteLeagueImg: UIImageView!
+    
 
+    @IBAction func favLeagueButton(_ sender: UIButton) {
+    }
+    @IBOutlet weak var favLeagueText: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

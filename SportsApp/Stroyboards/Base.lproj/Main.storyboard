@@ -88,15 +88,65 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vNd-a4-aXD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.52717711560000002" blue="0.56408629440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FavouriteLeaguesViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavouriteLeaguesViewCell" id="wCJ-Hp-ZQq" customClass="FavouriteLeaguesViewCell" customModule="SportsApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FavouriteLeaguesViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavouriteLeaguesViewCell" rowHeight="100" id="wCJ-Hp-ZQq" customClass="FavouriteLeaguesViewCell" customModule="SportsApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wCJ-Hp-ZQq" id="4WU-Vc-Do5">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trp-yN-ZFP">
+                                            <rect key="frame" x="16" y="0.0" width="382" height="100"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kZa-8J-OjI">
+                                                    <rect key="frame" x="8" y="8" width="76.5" height="84"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQy-Sc-wlL">
+                                                    <rect key="frame" x="92.5" y="16" width="216.5" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.31388238130000001" blue="0.3358581853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPi-Ks-8J3">
+                                                    <rect key="frame" x="318" y="44" width="56" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="R8n-iP-l9s"/>
+                                                        <constraint firstAttribute="width" constant="56" id="dmJ-k1-wwT"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="youtube (3)"/>
+                                                    <connections>
+                                                        <action selector="favLeagueButton:" destination="wCJ-Hp-ZQq" eventType="touchUpInside" id="snv-N2-WxE"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstItem="WQy-Sc-wlL" firstAttribute="leading" secondItem="kZa-8J-OjI" secondAttribute="trailing" constant="8" id="27j-mb-WUz"/>
+                                                <constraint firstItem="kZa-8J-OjI" firstAttribute="width" secondItem="trp-yN-ZFP" secondAttribute="width" multiplier="0.2" id="AAU-hr-q9j"/>
+                                                <constraint firstAttribute="bottom" secondItem="kZa-8J-OjI" secondAttribute="bottom" constant="8" id="Bfq-3x-68O"/>
+                                                <constraint firstAttribute="trailing" secondItem="WQy-Sc-wlL" secondAttribute="trailing" constant="73" id="LmF-zg-Jyl"/>
+                                                <constraint firstAttribute="trailing" secondItem="UPi-Ks-8J3" secondAttribute="trailing" constant="8" id="RgX-kw-uff"/>
+                                                <constraint firstItem="kZa-8J-OjI" firstAttribute="leading" secondItem="trp-yN-ZFP" secondAttribute="leading" constant="8" id="a8Q-Yj-m5u"/>
+                                                <constraint firstItem="kZa-8J-OjI" firstAttribute="top" secondItem="trp-yN-ZFP" secondAttribute="top" constant="8" id="gaf-vH-HJf"/>
+                                                <constraint firstAttribute="bottom" secondItem="UPi-Ks-8J3" secondAttribute="bottom" constant="8" id="jJk-ln-Xwr"/>
+                                                <constraint firstItem="WQy-Sc-wlL" firstAttribute="top" secondItem="trp-yN-ZFP" secondAttribute="top" constant="16" id="lKb-jS-EFD"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.0" green="0.52717711560000002" blue="0.56408629440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="trp-yN-ZFP" secondAttribute="trailing" constant="16" id="2c8-e5-ROI"/>
+                                        <constraint firstItem="trp-yN-ZFP" firstAttribute="leading" secondItem="4WU-Vc-Do5" secondAttribute="leading" constant="16" id="PuB-67-0Qx"/>
+                                        <constraint firstItem="trp-yN-ZFP" firstAttribute="top" secondItem="4WU-Vc-Do5" secondAttribute="top" id="h6n-mQ-IPq"/>
+                                        <constraint firstAttribute="bottom" secondItem="trp-yN-ZFP" secondAttribute="bottom" id="krJ-Zu-qtj"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="favLeagueText" destination="WQy-Sc-wlL" id="fqW-R9-mtc"/>
+                                    <outlet property="favouriteLeagueImg" destination="kZa-8J-OjI" id="TBg-WJ-97i"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -179,52 +229,65 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PEM-dW-jUk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.25224743030000002" blue="0.2699079949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.001645846874" green="0.50642240049999998" blue="0.54158234599999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.001645846874" green="0.50642240049999998" blue="0.54158234599999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" alpha="0.55000000000000004" contentMode="scaleToFill" restorationIdentifier="LeagueViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeagueViewCell" rowHeight="100" id="tqH-OG-Nyq" customClass="LeagueViewCell" customModule="SportsApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LeagueViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeagueViewCell" rowHeight="100" id="tqH-OG-Nyq" customClass="LeagueViewCell" customModule="SportsApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tqH-OG-Nyq" id="H2p-B1-U3d">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="GQZ-Du-o6X">
-                                            <rect key="frame" x="16" y="8" width="83" height="84"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V8 Supercars" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnc-W0-GAg">
-                                            <rect key="frame" x="107" y="27" width="227" height="19.5"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.25224743030000002" blue="0.2699079949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OD-II-qYm">
-                                            <rect key="frame" x="330" y="37" width="56" height="48"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xvj-NS-38S">
+                                            <rect key="frame" x="16" y="0.0" width="382" height="100"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="GQZ-Du-o6X">
+                                                    <rect key="frame" x="8" y="8" width="114.5" height="84"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V8 Supercars" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnc-W0-GAg">
+                                                    <rect key="frame" x="126.5" y="16" width="191.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.25224743030000002" blue="0.2699079949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OD-II-qYm">
+                                                    <rect key="frame" x="318" y="44" width="56" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="Kq8-pB-GFu"/>
+                                                        <constraint firstAttribute="width" constant="56" id="kwR-2e-Ccx"/>
+                                                    </constraints>
+                                                    <state key="normal" image="youtube (3)"/>
+                                                    <connections>
+                                                        <action selector="youTube:" destination="tqH-OG-Nyq" eventType="touchUpInside" id="wv9-OK-FKa"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="48" id="EKU-Ax-ymT"/>
-                                                <constraint firstAttribute="width" constant="56" id="OqG-DF-gmf"/>
+                                                <constraint firstItem="GQZ-Du-o6X" firstAttribute="leading" secondItem="Xvj-NS-38S" secondAttribute="leading" constant="8" id="WIS-yD-AJc"/>
+                                                <constraint firstItem="tnc-W0-GAg" firstAttribute="top" secondItem="Xvj-NS-38S" secondAttribute="top" constant="16" id="aLb-Eq-Fp1"/>
+                                                <constraint firstItem="GQZ-Du-o6X" firstAttribute="width" secondItem="Xvj-NS-38S" secondAttribute="width" multiplier="0.3" id="bxL-bP-Hoz"/>
+                                                <constraint firstAttribute="trailing" secondItem="tnc-W0-GAg" secondAttribute="trailing" constant="64" id="gVD-F6-CYl"/>
+                                                <constraint firstAttribute="trailing" secondItem="2OD-II-qYm" secondAttribute="trailing" constant="8" id="iEa-Bf-iCR"/>
+                                                <constraint firstAttribute="bottom" secondItem="GQZ-Du-o6X" secondAttribute="bottom" constant="8" id="mn7-01-cOX"/>
+                                                <constraint firstItem="GQZ-Du-o6X" firstAttribute="top" secondItem="Xvj-NS-38S" secondAttribute="top" constant="8" id="saI-Mk-HNi"/>
+                                                <constraint firstItem="tnc-W0-GAg" firstAttribute="leading" secondItem="GQZ-Du-o6X" secondAttribute="trailing" constant="4" id="vH2-lI-LiD"/>
+                                                <constraint firstAttribute="bottom" secondItem="2OD-II-qYm" secondAttribute="bottom" constant="8" id="wFK-VU-J47"/>
                                             </constraints>
-                                            <state key="normal" image="youtube (3)"/>
-                                            <connections>
-                                                <action selector="youTube:" destination="tqH-OG-Nyq" eventType="touchUpInside" id="wv9-OK-FKa"/>
-                                            </connections>
-                                        </button>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="2OD-II-qYm" secondAttribute="trailing" constant="8" id="4S4-oE-X3D"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="tnc-W0-GAg" secondAttribute="trailing" constant="60" id="GXw-bc-KKg"/>
-                                        <constraint firstItem="GQZ-Du-o6X" firstAttribute="top" secondItem="H2p-B1-U3d" secondAttribute="top" constant="8" id="JBb-z7-QST"/>
-                                        <constraint firstAttribute="bottom" secondItem="GQZ-Du-o6X" secondAttribute="bottom" constant="8" id="Jqx-nw-wvI"/>
-                                        <constraint firstItem="tnc-W0-GAg" firstAttribute="leading" secondItem="GQZ-Du-o6X" secondAttribute="trailing" constant="8" id="RzI-Py-Dxk"/>
-                                        <constraint firstItem="tnc-W0-GAg" firstAttribute="top" secondItem="H2p-B1-U3d" secondAttribute="topMargin" constant="16" id="XnA-aZ-NnQ"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="2OD-II-qYm" secondAttribute="bottom" constant="4" id="YzO-UX-gt9"/>
-                                        <constraint firstItem="GQZ-Du-o6X" firstAttribute="leading" secondItem="H2p-B1-U3d" secondAttribute="leading" constant="16" id="ypK-B2-3Xq"/>
+                                        <constraint firstItem="Xvj-NS-38S" firstAttribute="leading" secondItem="H2p-B1-U3d" secondAttribute="leading" constant="16" id="1kh-cn-kn4"/>
+                                        <constraint firstAttribute="bottom" secondItem="Xvj-NS-38S" secondAttribute="bottom" id="Yrp-Nt-9ZQ"/>
+                                        <constraint firstItem="Xvj-NS-38S" firstAttribute="top" secondItem="H2p-B1-U3d" secondAttribute="top" id="cjM-wS-429"/>
+                                        <constraint firstAttribute="trailing" secondItem="Xvj-NS-38S" secondAttribute="trailing" constant="16" id="fWr-Bi-IXJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.52717711557933533" blue="0.56408629439086289" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="GQZ-Du-o6X" firstAttribute="width" secondItem="tqH-OG-Nyq" secondAttribute="width" multiplier="0.2" id="pRZ-oz-ve9"/>
-                                </constraints>
                                 <connections>
+                                    <outlet property="ViewInCell" destination="Xvj-NS-38S" id="WYe-4Y-VP8"/>
                                     <outlet property="leaguesImg" destination="GQZ-Du-o6X" id="RRc-8g-Dlu"/>
                                     <outlet property="leaguesTitle" destination="tnc-W0-GAg" id="DJY-BE-Twt"/>
                                 </connections>
