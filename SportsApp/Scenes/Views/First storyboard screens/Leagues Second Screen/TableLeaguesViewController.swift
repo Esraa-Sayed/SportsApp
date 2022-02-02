@@ -46,11 +46,7 @@ class TableLeaguesViewController: UITableViewController {
         presenter.configure(cell: &cell, forIndex: indexPath.section)
         let verticalPadding: CGFloat = 8
         cell.ViewInCell.layer.cornerRadius = 8
-        /*let maskLayer = CALayer()
-        maskLayer.cornerRadius = 8   //if you want round edges
-        maskLayer.backgroundColor = UIColor.black.cgColor
-        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
-        cell.layer.mask = maskLayer*/
+
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -66,7 +62,7 @@ class TableLeaguesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         //rgb(0, 129, 138)
-        headerView.backgroundColor = UIColor(red: 0.0/255.0, green: 129.0/255.0, blue: 138.0/255.0, alpha: 1.0)
+        headerView.backgroundColor = UIColor(red: 0.0/255.0, green: 95.0/255.0, blue: 91.0/255.0, alpha: 1.0)
         return headerView
     }
 }
