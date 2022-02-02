@@ -85,7 +85,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
      dataSource.getLatestResults(id: id, complitionHandler: { (result) in
      self.latestResultsArray = result
      self.leagueDetailsView?.hideIndicator()
-     self.leagueDetailsView?.updateUIViewLatestResult(latestResult: result!)
+        self.leagueDetailsView?.updateUIViewLatestResult(latestResult: self.latestResultsArray!)
      })
      self.leagueDetailsView?.refresh()
     }
@@ -99,7 +99,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
      dataSource.getTeam(id: id, complitionHandler: { (result) in
      self.teamsArray = result
      self.leagueDetailsView?.hideIndicator()
-     self.leagueDetailsView?.updateUIViewTeam(teams: result!)
+        self.leagueDetailsView?.updateUIViewTeam(teams: self.teamsArray!)
      })
      self.leagueDetailsView?.refresh()
     }
