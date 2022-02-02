@@ -89,6 +89,7 @@ class AllLeaguesVCPresenter
     func didSelectedRow(index:Int)
        {
            let league = Leagues[index]
+        league.strLeague = league.strLeague.replacingOccurrences(of: " ", with: "%20")
         view?.navigateToLeagueDetils(league: league)
        }
 }

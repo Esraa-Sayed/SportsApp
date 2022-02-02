@@ -10,6 +10,11 @@ import UIKit
 
 class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,UICollectionViewDataSource , UICollectionViewDelegate  {
    
+   
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+
+    }
     
     @IBOutlet weak var eventsCollectionView: UICollectionView!
     
@@ -28,9 +33,6 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "League Details"
-        self.tabBarController?.tabBar.isHidden = true
-
         self.eventsCollectionView.delegate = self
         self.eventsCollectionView.dataSource = self
               
@@ -40,8 +42,8 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
         self.teamsCollectionView.delegate = self
         self.teamsCollectionView.dataSource = self
               
-        self.league?.strLeague = self.league?.strLeague.replacingOccurrences(of: "", with: "%20") ?? ""
-        print(league!.strLeague)
+        
+        
 
        leaguePresenter = LeagueDetailsPresenter(view: self)
         
@@ -50,6 +52,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
                  print("Yes! internet is available.")
                 leaguePresenter?.loadEvents(id:"")
                 leaguePresenter?.loadLatestResults(id:league!.strLeague)
+                print(league!.strLeague)
                 leaguePresenter?.loadTeams(id: "")
              }
              else
@@ -105,7 +108,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
 
             cell.eventName.text = eventsArray?[indexPath.row].eventName  ?? ""
             cell.eventDate.text = eventsArray![indexPath.row].eventDate
-               cell.eventTime.text = eventsArray![indexPath.row].eventTime
+            cell.eventTime.text = eventsArray![indexPath.row].eventTime
             print(eventsArray![indexPath.row].eventDate)
                return cell
                
@@ -113,7 +116,6 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
                  let  cell = teamsCollectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamCollectionViewCell
                cell.teamImage.kf.indicatorType = .activity
                cell.teamImage.kf.setImage(with: URL(string: teamsArray![indexPath.row].imageURL))
-            print(teamsArray![indexPath.row].imageURL)
                 return cell
                
            }

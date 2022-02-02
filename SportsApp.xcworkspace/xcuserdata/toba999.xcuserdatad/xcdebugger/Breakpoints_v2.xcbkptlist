@@ -62,9 +62,9 @@
             filePath = "SportsApp/Scenes/Views/Second storyboard screens/LeagueDetailsVCExtension.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "updateUIViewEvent(events:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "updateUIViewTeam(teams:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -78,8 +78,8 @@
             filePath = "SportsApp/Scenes/Views/Second storyboard screens/LeagueDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

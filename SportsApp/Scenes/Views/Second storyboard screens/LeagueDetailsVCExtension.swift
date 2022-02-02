@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 extension LeagueDetailsViewController {
    
-    
+  
     func showIndicator() {
         indicator.center = self.view.center
         self.view.addSubview(indicator)
