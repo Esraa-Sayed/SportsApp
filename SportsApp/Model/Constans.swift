@@ -40,6 +40,7 @@ enum Constants {
      static let idTeam = "idTeam"
     static let strTeam = "strTeam"
      static let strTeamBadge = "strTeamBadge"
+    static let strTeamLogo = "strTeamLogo"
      static let teamsArrayNotification = "teamsArrayNotification"
     static let strCountry = "strCountry"
      static let intFormedYear = "intFormedYear"

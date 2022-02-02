@@ -73,7 +73,7 @@ class EventDataSource : EventDataSourceProtocol {
         
     
     func getTeam(id : String,complitionHandler : @escaping ([Team]?) -> Void) {
-            let url = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l="
+            let url = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l="+id
             var teamsArray = [Team]()
             Alamofire.request(url).response { response in
                 

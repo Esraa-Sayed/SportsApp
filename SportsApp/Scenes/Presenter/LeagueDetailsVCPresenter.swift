@@ -10,11 +10,12 @@ import Foundation
 protocol LeagueDetailsProtocol {
     
     func loadEvents(id:String)
-    
+    func getEventsCount()->Int
     func loadLatestResults(id:String)
-    
+    func getLatestResultsCount()->Int
     func loadTeams(id:String)
-        
+    func  getTeamsCount() -> Int
+    
     
    }
 protocol LeagueDetailsViewProtocol :class {
@@ -44,6 +45,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
        }
        
     
+    
     func loadEvents(id:String) {
         dataSource.getEvents(id: id, complitionHandler: { (result) in
         self.eventsArray = result
@@ -57,8 +59,8 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
        func getEventsCount()->Int{
            return eventsArray!.count
        }
-       
-
+    
+      
     
     func loadLatestResults(id:String){
      dataSource.getLatestResults(id: id, complitionHandler: { (result) in
