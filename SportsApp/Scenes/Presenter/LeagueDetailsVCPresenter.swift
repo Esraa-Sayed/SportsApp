@@ -54,8 +54,8 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
 //           loadTeams(id: league.strLeague)
             
             loadEvents(id:"")
-            loadLatestResults(id:"")
-            loadTeams(id: "English%20Premier%20League")
+         //   loadLatestResults(id:"")
+        //  loadTeams(id: "English%20Premier%20League")
             
             print(league.idLeague!)
             return true;
@@ -97,6 +97,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
     }
     
     func getLatestResultsCount()->Int{
+        
         return self.latestResultsArray!.count
     }
     
@@ -106,7 +107,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
      self.teamsArray = result
      self.leagueDetailsView?.hideIndicator()
      self.leagueDetailsView?.refresh()
-       
+     print(self.getTeamsCount())
      })
     }
     

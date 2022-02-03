@@ -58,10 +58,10 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
              if (collectionView == self.eventsCollectionView) {
                 return  leaguePresenter!.getEventsCount()
            } else if (collectionView == self.latestResultsCollectionView){
-                return  leaguePresenter!.getLatestResultsCount()
+                return 0// leaguePresenter!.getLatestResultsCount()
                 
              } else {
-                return  leaguePresenter!.getTeamsCount()
+                return  0//leaguePresenter!.getTeamsCount()
            }
        }
     
