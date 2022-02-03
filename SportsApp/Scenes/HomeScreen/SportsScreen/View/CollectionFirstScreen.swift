@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class CollectionFirstScreen: UICollectionViewController {
+class CollectionFirstScreen: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     let refreshControl = UIRefreshControl()
     var presenter :AllSportsVCPresenter!
     var indicator :UIActivityIndicatorView?
@@ -20,7 +20,6 @@ class CollectionFirstScreen: UICollectionViewController {
         indicator = UIActivityIndicatorView(style: .large)
         indicator?.center = self.view.center
         self.view.addSubview(indicator!)
-        
         presenter = AllSportsVCPresenter(view: self)
         if !presenter.viewDidLoad()
         {
@@ -77,6 +76,10 @@ class CollectionFirstScreen: UICollectionViewController {
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectedRow(index: indexPath.row)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let widthSize = (collectionView.frame.size.width - 48) / 2
+        return CGSize(width: widthSize, height:180)
     }
 
 }
