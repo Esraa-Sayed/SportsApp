@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,UICollectionViewDataSource , UICollectionViewDelegate  {
+class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,UICollectionViewDataSource , UICollectionViewDelegate, UIScrollViewDelegate  {
    
    
     @IBAction func backButton(_ sender: Any) {
@@ -31,6 +31,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     var league : Country?
     var checkNet :Bool?
     
+    @IBOutlet weak var ScrollView: UIScrollView!
     override func viewDidAppear(_ animated: Bool) {
         if !(checkNet!) {
              Toast.showToast(controller: self, message : "No internet connection", seconds: 4.0)
@@ -41,7 +42,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     override func viewDidLoad() {
         super.viewDidLoad()
         leaguePresenter = LeagueDetailsPresenter(view:self )
-        
+        self.ScrollView.delegate = self
         self.eventsCollectionView.delegate = self
         self.eventsCollectionView.dataSource = self
               
@@ -55,7 +56,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
         
                
     }
-   
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
              if (collectionView == self.eventsCollectionView) {
