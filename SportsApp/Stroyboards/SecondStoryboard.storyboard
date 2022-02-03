@@ -48,8 +48,9 @@
                                     <constraint firstItem="32T-7W-Ajt" firstAttribute="top" secondItem="ih7-n1-ZgQ" secondAttribute="top" constant="52" id="yrx-dm-aEO"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="jk1-0d-VtH">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" contentInsetAdjustmentBehavior="scrollableAxes" keyboardDismissMode="onDrag" id="jk1-0d-VtH">
                                 <rect key="frame" x="0.0" y="98" width="414" height="798"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0s1-Aq-PSW">
                                         <rect key="frame" x="0.0" y="36" width="414" height="126"/>
@@ -290,13 +291,10 @@
                         <color key="backgroundColor" red="0.0" green="0.31388238130000001" blue="0.3358581853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.50255692009999997" blue="0.54159724710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jk1-0d-VtH" firstAttribute="centerX" secondItem="SqA-Rf-9Fn" secondAttribute="centerX" id="30n-Lv-5M2"/>
                             <constraint firstItem="jk1-0d-VtH" firstAttribute="trailing" secondItem="ih7-n1-ZgQ" secondAttribute="trailing" id="5CF-yR-WPn"/>
                             <constraint firstItem="jk1-0d-VtH" firstAttribute="top" secondItem="ih7-n1-ZgQ" secondAttribute="bottom" constant="8.3333333333333286" id="8of-dc-WfI"/>
                             <constraint firstItem="ih7-n1-ZgQ" firstAttribute="top" secondItem="SqA-Rf-9Fn" secondAttribute="topMargin" constant="-44" id="Oqt-yX-saa"/>
                             <constraint firstItem="rfn-1w-ezH" firstAttribute="top" secondItem="ih7-n1-ZgQ" secondAttribute="bottom" constant="8.3333333333333286" id="YfC-EN-Fbd"/>
-                            <constraint firstItem="jk1-0d-VtH" firstAttribute="top" secondItem="ih7-n1-ZgQ" secondAttribute="bottom" constant="8.3333333333333286" id="gWp-Ke-vzV"/>
-                            <constraint firstItem="jk1-0d-VtH" firstAttribute="top" secondItem="SqA-Rf-9Fn" secondAttribute="top" constant="98" id="gaf-jR-tZV"/>
                             <constraint firstAttribute="bottomMargin" secondItem="jk1-0d-VtH" secondAttribute="bottom" constant="-34" id="q2i-zM-MWh"/>
                             <constraint firstItem="jk1-0d-VtH" firstAttribute="leading" secondItem="ih7-n1-ZgQ" secondAttribute="leading" id="srF-AW-Krd"/>
                         </constraints>

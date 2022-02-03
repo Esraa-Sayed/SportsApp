@@ -10,6 +10,7 @@ import XCTest
 @testable import SportsApp
 class SportsAppTests: XCTestCase {
     var sportApi = SportsAPi()
+    var dataSource = EventDataSource()
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -31,5 +32,9 @@ class SportsAppTests: XCTestCase {
         }
          waitForExpectations(timeout: 5, handler: nil)
     }
+    
+   
+    
+    
 
 }
