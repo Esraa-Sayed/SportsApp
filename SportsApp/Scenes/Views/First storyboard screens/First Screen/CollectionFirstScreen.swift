@@ -24,9 +24,11 @@ class CollectionFirstScreen: UICollectionViewController {
         presenter = AllSportsVCPresenter(view: self)
         if !presenter.viewDidLoad()
         {
-            Toast.showToast(controller: self, message : "No internet connection", seconds: 4.0)
+            Toast.showToast(controller: self, message : "No internet connection", seconds: 2.0)
         }
-         refreshControl.attributedTitle = NSAttributedString(string: "refresh")
+    
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]
+        refreshControl.attributedTitle = NSAttributedString(string: "Refresh", attributes: attributes)
          refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         refreshControl.tintColor = .white
         collectionView.refreshControl = refreshControl
@@ -49,8 +51,9 @@ class CollectionFirstScreen: UICollectionViewController {
           {
               Toast.showToast(controller: self, message : "No internet connection", seconds: 1.0)
           }
-        refreshControl.endRefreshing()
         collectionView.reloadData()
+        refreshControl.endRefreshing()
+       
     }
     // MARK: UICollectionViewDataSource
 
