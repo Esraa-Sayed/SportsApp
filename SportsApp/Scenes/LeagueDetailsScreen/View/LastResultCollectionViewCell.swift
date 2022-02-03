@@ -10,6 +10,7 @@ import UIKit
 
 class LastResultCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var thumbImage: UIImageView!
     
     @IBOutlet weak var teamName: UILabel!
     

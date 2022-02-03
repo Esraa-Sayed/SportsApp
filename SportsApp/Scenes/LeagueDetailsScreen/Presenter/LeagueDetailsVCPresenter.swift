@@ -55,7 +55,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
 //           loadTeams(id: league.strLeague)
             
             loadEvents(id:"")
-            loadLatestResults(id:"")
+            loadLatestResults(id:"4328")
             loadTeams(id: "English%20Premier%20League")
             
             print(league.idLeague!)

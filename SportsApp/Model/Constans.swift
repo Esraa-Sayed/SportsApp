@@ -27,7 +27,8 @@ enum Constants {
     static let strBadge = "strBadge"
     static let leaguesArrayNotification = "leaguesArrayNotification"
     static let savedLeaguesArrayNotification = "savedLeaguesArrayNotification"
-    static let EVENTS = "event"
+    static let EVENTS = "events"
+    static let EVENT = "event"
    static let  idEvent = "idEvent"
     static let strEvent = "strEvent"
     static let strDateEvent = "dateEvent"
@@ -51,6 +52,8 @@ enum Constants {
     static let baseLink = "https://www.thesportsdb.com/api/v1/json/2"
     static let allSports = "/all_sports.php"
    static let allLeagues = "/search_all_leagues.php"
+     static let strThumb = "strThumb"
+   
     
 }
 

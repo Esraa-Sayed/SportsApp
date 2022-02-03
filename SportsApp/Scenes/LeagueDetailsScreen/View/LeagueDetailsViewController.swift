@@ -92,6 +92,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
                    + " VS " + String (describing: latestResultsArray![indexPath.row].intAwayScore )
                cell.teamDate.text = latestResultsArray![indexPath.row].eventDate
                cell.teamTime.text = latestResultsArray![indexPath.row].eventTime
+            cell.thumbImage.kf.setImage(with: URL(string: latestResultsArray![indexPath.row].thumbURL),placeholder: UIImage(named: "PlaceholderImg"))
                return cell
            }
            else if collectionView == self.eventsCollectionView {
