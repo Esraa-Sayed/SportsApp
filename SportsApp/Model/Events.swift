@@ -7,7 +7,12 @@
 //
 
 import Foundation
-class Event : Decodable {
+class Event : Decodable , NSCopying{
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Event(ID: ID, eventName: eventName, eventDate: eventDate, eventTime: eventTime, intHomeScore: intHomeScore, intAwayScore: intAwayScore)
+        return copy
+    }
+    
    
     var ID : Int
     var eventName : String

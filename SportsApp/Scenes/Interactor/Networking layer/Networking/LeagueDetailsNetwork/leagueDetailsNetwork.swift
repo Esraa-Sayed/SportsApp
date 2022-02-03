@@ -11,79 +11,97 @@ import Alamofire
 import SwiftyJSON
 
 protocol EventDataSourceProtocol {
-    func getEvents(id:String,complitionHandler : @escaping ([Event]?) -> Void)
-    func getLatestResults (id:String,complitionHandler : @escaping ([Event]?) -> Void)
-    func getTeam(id:String,complitionHandler : @escaping ([TeamDetailsModel]?) -> Void)
+    func getEvents(id:String,complitionHandler : @escaping ([Event]?,String) -> Void)
+    func getLatestResults (id:String,complitionHandler : @escaping ([Event]?,String) -> Void)
+    func getTeam(id:String,complitionHandler : @escaping ([TeamDetailsModel]?,String) -> Void)
     
 }
 
-//https://www.thesportsdb.com/api/v1/json/2/searchevents.php?e=
-//https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id=
+
 class EventDataSource : EventDataSourceProtocol {
     
+    let urlMain = "https://www.thesportsdb.com/api/v1/json/2/searchevents.php?e="
+    let urlSub = "https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id="
+    let urlTeams = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l="
     
-    func getEvents(id: String,complitionHandler : @escaping ([Event]?) -> Void) {
-        let url = "https://www.thesportsdb.com/api/v1/json/2/searchevents.php?e="
+    
+    func getEvents(id: String,complitionHandler : @escaping ([Event]?,String) -> Void) {
+        let url = urlMain + id
         var eventsArray = [Event]()
         Alamofire.request(url).response { response in
+            guard let statusCode = response.response?.statusCode else
+            {
+            complitionHandler(nil,"Error while fetching eventsArray")
+                return
+            }
+            if statusCode == 200{
+                if let data = response.data {
+                let json = JSON(data)
+                let events = json[Constants.EVENTS].arrayValue
+                for event in events {
+                    let id = event[Constants.idEvent].intValue
+                    let name = event[Constants.strEvent].stringValue
+                    let date = event[Constants.strDateEvent].stringValue
+                    let time = event[Constants.strTimeEvent].stringValue
+                    let intHomeScore = event[Constants.intHomeScore].stringValue
+                    let intAwayScore = event[Constants.intAwayScore].stringValue
+                    if intAwayScore == ""{
+                    eventsArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time , intHomeScore: intHomeScore  , intAwayScore: intAwayScore ))
+                       }
+                   }
+               }
+              complitionHandler(eventsArray,"")
+               print(eventsArray.count)
+           }
+        }
 
-                    if let data = response.data {
-                        let json = JSON(data)
-                        let events = json[Constants.EVENTS].arrayValue
-                        for event in events {
-                            let id = event[Constants.idEvent].intValue
-                            let name = event[Constants.strEvent].stringValue
-                            let date = event[Constants.strDateEvent].stringValue
-                            let time = event[Constants.strTimeEvent].stringValue
-                            let intHomeScore = event[Constants.intHomeScore].stringValue
-                            let intAwayScore = event[Constants.intAwayScore].stringValue
-                            if intAwayScore == ""{
-                                 eventsArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time , intHomeScore: intHomeScore  , intAwayScore: intAwayScore ))
-                            }
-                        }
-                    }
-                   complitionHandler(eventsArray)
-                    print(eventsArray.count)
-                }
+                   
     }
     
     
-     func getLatestResults(id: String,complitionHandler : @escaping ([Event]?) -> Void){
-            let url = "https://www.thesportsdb.com/api/v1/json/2/searchevents.php?e="
+     func getLatestResults(id: String,complitionHandler : @escaping ([Event]?,String) -> Void){
+            let url = urlMain + id
             var latestResultsArray = [Event]()
             Alamofire.request(url).response { response in
                 
-                if let data = response.data {
-                    
-                    let json = JSON(data)
-                    let latestResults = json[Constants.EVENTS].arrayValue
-                    
-                    for result in latestResults {
-                        let id = result[Constants.idEvent].intValue
-                        
-                        let name = result[Constants.strEvent].stringValue
-                        let date = result[Constants.strDateEvent].stringValue
-                        let time = result[Constants.strTimeEvent].stringValue
-                        let intHomeScore = result[Constants.intHomeScore].stringValue
-                        let intAwayScore = result[Constants.intAwayScore].stringValue
-                        if intAwayScore != ""{
-                        latestResultsArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time , intHomeScore: intHomeScore, intAwayScore: intAwayScore))
-                        }
-                    }
-                    
-                }
-                complitionHandler(latestResultsArray)
-                print(latestResultsArray.count)
+           guard let statusCode = response.response?.statusCode else{
+            complitionHandler(nil,"Error while fetching eventsArray")
+            return
             }
+            if statusCode == 200{
+             if let data = response.data {
+              let json = JSON(data)
+              let events = json[Constants.EVENTS].arrayValue
+              for event in events {
+                  let id = event[Constants.idEvent].intValue
+                  let name = event[Constants.strEvent].stringValue
+                  let date = event[Constants.strDateEvent].stringValue
+                  let time = event[Constants.strTimeEvent].stringValue
+                  let intHomeScore = event[Constants.intHomeScore].stringValue
+                  let intAwayScore = event[Constants.intAwayScore].stringValue
+                  if intAwayScore != ""{
+                       latestResultsArray.append(Event(ID: id , eventName: name ,  eventDate: date , eventTime: time , intHomeScore: intHomeScore  , intAwayScore: intAwayScore ))
+                  }
+              }
+          }
+                 complitionHandler(latestResultsArray,"")
+                  print(latestResultsArray.count)
+              }
+           }
         }
         
     
-    func getTeam(id : String,complitionHandler : @escaping ([TeamDetailsModel]?) -> Void) {
-            let url = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l="+id
+    func getTeam(id : String,complitionHandler : @escaping ([TeamDetailsModel]?,String) -> Void) {
+            let url = urlTeams + id
             var teamsArray = [TeamDetailsModel]()
             Alamofire.request(url).response { response in
-                
-                if let data = response.data {
+                guard let statusCode = response.response?.statusCode else
+                {
+                complitionHandler(nil,"Error while fetching eventsArray")
+                return
+                }
+                if statusCode == 200{
+                 if let data = response.data {
                     let json = JSON(data)
                     let teams = json[Constants.TEAMS].arrayValue
                     
@@ -109,9 +127,11 @@ class EventDataSource : EventDataSourceProtocol {
                       
                         teamsArray.append(TeamDetailsModel(teamID: id, teamName: name, countryTeam: countryName, formedYear: formedYear, leagueName: leagueName, teamImage: logo, stadiumImage: stadiumImage, stadiumName: stadiumName, stadiumLocation: stadiumLocation))
                     }
+                  }
+                    complitionHandler(teamsArray,"")
+                    print(teamsArray.count)
                 }
-                 complitionHandler(teamsArray)
-               print(teamsArray.count)
+                 
             }
         }
     

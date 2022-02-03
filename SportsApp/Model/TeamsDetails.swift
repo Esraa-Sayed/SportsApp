@@ -7,7 +7,13 @@
 //
 
 import Foundation
-class TeamDetailsModel : Decodable {
+class TeamDetailsModel : Decodable, NSCopying {
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = TeamDetailsModel(teamID: teamID!, teamName: teamName!, countryTeam: countryTeam!, formedYear: formedYear!, leagueName: leagueName!, teamImage: teamImage!, stadiumImage: stadiumImage!, stadiumName: stadiumName!, stadiumLocation: stadiumLocation!)
+        return copy
+    }
+    
     
     var teamID: Int?
     var teamName : String?

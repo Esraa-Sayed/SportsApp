@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Kingfisher
+
 protocol LeagueDetailsProtocol {
     
     func loadEvents(id:String)
@@ -22,10 +24,7 @@ protocol LeagueDetailsProtocol {
 protocol LeagueDetailsViewProtocol :class {
     func showIndicator()
     func hideIndicator()
-    func updateUIViewEvent(events: [Event])
-    func updateUIViewLatestResult(latestResult: [Event])
-    func updateUIViewTeam(teams: [TeamDetailsModel])
-     func refresh ()
+    func refresh ()
     func alertMessage ()
  
 }
@@ -50,9 +49,14 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
         if CheckInternetConnectivity.isConnectedToInternet {
             print("Yes! internet is available.")
           
-           loadEvents(id:league.idLeague!)
-           loadLatestResults(id:league.idLeague!)
-           loadTeams(id: "English%20Premier%20League")
+//           loadEvents(id:league.idLeague!)
+//           loadLatestResults(id:league.idLeague!)
+//           loadTeams(id: league.strLeague)
+            
+            loadEvents(id:"")
+            loadLatestResults(id:"")
+            loadTeams(id: "English%20Premier%20League")
+            
             print(league.idLeague!)
             return true;
         }
@@ -67,46 +71,73 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
     
     
     func loadEvents(id:String) {
-        dataSource.getEvents(id: id, complitionHandler: { (result) in
+        dataSource.getEvents(id: id, complitionHandler: { (result,Error) in
         self.eventsArray = result
         self.leagueDetailsView?.hideIndicator()
-        self.leagueDetailsView?.updateUIViewEvent(events: self.eventsArray!)
-        })
         self.leagueDetailsView?.refresh()
+        print(self.getEventsCount())
+        })
+        
        }
        
        func getEventsCount()->Int{
-           return eventsArray!.count
+        return self.eventsArray!.count
        }
     
       
     
     func loadLatestResults(id:String){
-     dataSource.getLatestResults(id: id, complitionHandler: { (result) in
+     dataSource.getLatestResults(id: id, complitionHandler: { (result,Error) in
      self.latestResultsArray = result
      self.leagueDetailsView?.hideIndicator()
-        self.leagueDetailsView?.updateUIViewLatestResult(latestResult: self.latestResultsArray!)
+    self.leagueDetailsView?.refresh()
+        print(self.getLatestResultsCount())
+
      })
-     self.leagueDetailsView?.refresh()
     }
     
     func getLatestResultsCount()->Int{
-        return latestResultsArray!.count
+        return self.latestResultsArray!.count
     }
     
    
     func loadTeams(id:String) {
-     dataSource.getTeam(id: id, complitionHandler: { (result) in
+     dataSource.getTeam(id: id, complitionHandler: { (result,Error) in
      self.teamsArray = result
      self.leagueDetailsView?.hideIndicator()
-        self.leagueDetailsView?.updateUIViewTeam(teams: self.teamsArray!)
-     })
      self.leagueDetailsView?.refresh()
+       
+     })
     }
     
     func getTeamsCount()->Int{
-        return teamsArray!.count
+        return self.teamsArray!.count
     }
     
+    func configureEventCell(cell:EventCollectionViewCell ,forIndex: Int){
+        let event = self.eventsArray![forIndex]
+        cell.eventName.text = event.eventName
+        cell.eventDate.text = event.eventDate
+        cell.eventTime.text = event.eventTime
+        
+    }
+    
+    func configureLatestResultsCell(cell:LastResultCollectionViewCell ,forIndex: Int){
+        let latestResult = self.latestResultsArray![forIndex]
+        cell.teamName.text = latestResult.eventName
+        cell.teamScore.text = String (describing:latestResult.intHomeScore )
+                         + " VS " + String (describing: latestResult.intAwayScore )
+        cell.teamDate.text = latestResult.eventDate
+        cell.teamTime.text = latestResult.eventTime
+        
+    }
+    
+    func configureTeamCell(cell:TeamCollectionViewCell ,forIndex: Int){
+        let team = self.teamsArray![forIndex]
+        cell.teamImage.kf.indicatorType = .activity
+        cell.teamImage.kf.setImage(with: URL(string: team.teamImage!),placeholder: UIImage(named: "PlaceholderImg"))
+       }
    
+    
+    
 }
