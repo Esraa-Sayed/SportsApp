@@ -85,6 +85,7 @@ class EventDataSource : EventDataSourceProtocol {
               }
           }
                  complitionHandler(latestResultsArray,"")
+                
                   print(latestResultsArray.count)
               }
            }

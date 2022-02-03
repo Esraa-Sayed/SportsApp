@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import Kingfisher
-
 protocol LeagueDetailsProtocol {
     
     func loadEvents(id:String)
@@ -24,7 +22,10 @@ protocol LeagueDetailsProtocol {
 protocol LeagueDetailsViewProtocol :class {
     func showIndicator()
     func hideIndicator()
-    func refresh ()
+    func updateUIViewEvent(events: [Event])
+    func updateUIViewLatestResult(latestResult: [Event])
+    func updateUIViewTeam(teams: [TeamDetailsModel])
+     func refresh ()
     func alertMessage ()
  
 }
@@ -54,8 +55,8 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
 //           loadTeams(id: league.strLeague)
             
             loadEvents(id:"")
-         //   loadLatestResults(id:"")
-        //  loadTeams(id: "English%20Premier%20League")
+            loadLatestResults(id:"")
+            loadTeams(id: "English%20Premier%20League")
             
             print(league.idLeague!)
             return true;
@@ -74,14 +75,13 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
         dataSource.getEvents(id: id, complitionHandler: { (result,Error) in
         self.eventsArray = result
         self.leagueDetailsView?.hideIndicator()
-        self.leagueDetailsView?.refresh()
-        print(self.getEventsCount())
+        self.leagueDetailsView?.updateUIViewEvent(events: self.eventsArray!)
         })
-        
+        self.leagueDetailsView?.refresh()
        }
        
        func getEventsCount()->Int{
-        return self.eventsArray!.count
+           return eventsArray!.count
        }
     
       
@@ -90,15 +90,13 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
      dataSource.getLatestResults(id: id, complitionHandler: { (result,Error) in
      self.latestResultsArray = result
      self.leagueDetailsView?.hideIndicator()
-    self.leagueDetailsView?.refresh()
-        print(self.getLatestResultsCount())
-
+        self.leagueDetailsView?.updateUIViewLatestResult(latestResult: self.latestResultsArray!)
      })
+     self.leagueDetailsView?.refresh()
     }
     
     func getLatestResultsCount()->Int{
-        
-        return self.latestResultsArray!.count
+        return latestResultsArray!.count
     }
     
    
@@ -106,39 +104,14 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
      dataSource.getTeam(id: id, complitionHandler: { (result,Error) in
      self.teamsArray = result
      self.leagueDetailsView?.hideIndicator()
-     self.leagueDetailsView?.refresh()
-     print(self.getTeamsCount())
+        self.leagueDetailsView?.updateUIViewTeam(teams: self.teamsArray!)
      })
+     self.leagueDetailsView?.refresh()
     }
     
     func getTeamsCount()->Int{
-        return self.teamsArray!.count
+        return teamsArray!.count
     }
     
-    func configureEventCell(cell:EventCollectionViewCell ,forIndex: Int){
-        let event = self.eventsArray![forIndex]
-        cell.eventName.text = event.eventName
-        cell.eventDate.text = event.eventDate
-        cell.eventTime.text = event.eventTime
-        
-    }
-    
-    func configureLatestResultsCell(cell:LastResultCollectionViewCell ,forIndex: Int){
-        let latestResult = self.latestResultsArray![forIndex]
-        cell.teamName.text = latestResult.eventName
-        cell.teamScore.text = String (describing:latestResult.intHomeScore )
-                         + " VS " + String (describing: latestResult.intAwayScore )
-        cell.teamDate.text = latestResult.eventDate
-        cell.teamTime.text = latestResult.eventTime
-        
-    }
-    
-    func configureTeamCell(cell:TeamCollectionViewCell ,forIndex: Int){
-        let team = self.teamsArray![forIndex]
-        cell.teamImage.kf.indicatorType = .activity
-        cell.teamImage.kf.setImage(with: URL(string: team.teamImage!),placeholder: UIImage(named: "PlaceholderImg"))
-       }
    
-    
-    
 }

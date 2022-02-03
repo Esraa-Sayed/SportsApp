@@ -25,6 +25,9 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     public var leaguePresenter : LeagueDetailsPresenter?
 
    let indicator = UIActivityIndicatorView(style: .large)
+    var eventsArray:[Event]?
+    var latestResultsArray:[Event]?
+    var teamsArray:[TeamDetailsModel]?
     var league : Country?
     var checkNet :Bool?
     
@@ -56,12 +59,11 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
              if (collectionView == self.eventsCollectionView) {
-                return  leaguePresenter!.getEventsCount()
+                return  eventsArray?.count ?? 0
            } else if (collectionView == self.latestResultsCollectionView){
-                return 0// leaguePresenter!.getLatestResultsCount()
-                
+                return  latestResultsArray?.count ?? 0
              } else {
-                return  0//leaguePresenter!.getTeamsCount()
+                return  teamsArray?.count ?? 0
            }
        }
     
@@ -85,19 +87,25 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
            if collectionView == self.latestResultsCollectionView {
                let    cell = latestResultsCollectionView.dequeueReusableCell(withReuseIdentifier: "latestResultCell", for: indexPath) as! LastResultCollectionViewCell
-               leaguePresenter?.configureLatestResultsCell(cell: cell, forIndex: indexPath.row)
+               cell.teamName.text = latestResultsArray![indexPath.row].eventName
+               cell.teamScore.text = String (describing: latestResultsArray![indexPath.row].intHomeScore )
+                   + " VS " + String (describing: latestResultsArray![indexPath.row].intAwayScore )
+               cell.teamDate.text = latestResultsArray![indexPath.row].eventDate
+               cell.teamTime.text = latestResultsArray![indexPath.row].eventTime
                return cell
            }
            else if collectionView == self.eventsCollectionView {
            let   cell = eventsCollectionView.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as! EventCollectionViewCell
 
-            leaguePresenter?.configureEventCell(cell: cell, forIndex: indexPath.row)
+            cell.eventName.text = eventsArray?[indexPath.row].eventName  ?? ""
+            cell.eventDate.text = eventsArray![indexPath.row].eventDate
+            cell.eventTime.text = eventsArray![indexPath.row].eventTime
                return cell
                
            }else  if collectionView == self.teamsCollectionView  {
                  let  cell = teamsCollectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamCollectionViewCell
-            leaguePresenter?.configureTeamCell(cell: cell, forIndex: indexPath.row)
-
+               cell.teamImage.kf.indicatorType = .activity
+            cell.teamImage.kf.setImage(with: URL(string: teamsArray![indexPath.row].teamImage!),placeholder: UIImage(named: "PlaceholderImg"))
                 return cell
                
            }
