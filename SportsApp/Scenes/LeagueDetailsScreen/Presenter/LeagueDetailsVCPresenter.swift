@@ -27,6 +27,7 @@ protocol LeagueDetailsViewProtocol :class {
     func updateUIViewTeam(teams: [TeamDetailsModel])
      func refresh ()
     func alertMessage ()
+    func navigateToTeamDetails(team:TeamDetailsModel)
  
 }
 
@@ -113,5 +114,10 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
         return teamsArray!.count
     }
     
+    func didSelectedRow(index:Int)
+    {
+      let team = teamsArray![index]
+      leagueDetailsView?.navigateToTeamDetails(team: team)
+    }
    
 }

@@ -24,7 +24,6 @@ extension TableLeaguesViewController:LeaguesView
         let VC = storyboard.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsViewController
         VC.league = league
         self.present(VC, animated: true, completion: nil)
-      // self.show(VC, sender: nil)
 
     }
     

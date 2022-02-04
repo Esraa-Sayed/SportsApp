@@ -70,7 +70,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
            if collectionView == self.teamsCollectionView {
-               
+               leaguePresenter!.didSelectedRow(index: indexPath.row)
            }
        }
        
@@ -84,6 +84,8 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
            }
        }
        
+
+   
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
            if collectionView == self.latestResultsCollectionView {
@@ -94,6 +96,8 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
                cell.teamDate.text = latestResultsArray![indexPath.row].eventDate
                cell.teamTime.text = latestResultsArray![indexPath.row].eventTime
             cell.thumbImage.kf.setImage(with: URL(string: latestResultsArray![indexPath.row].thumbURL),placeholder: UIImage(named: "PlaceholderImg"))
+            cell.layer.cornerRadius = 20
+
                return cell
            }
            else if collectionView == self.eventsCollectionView {
@@ -102,6 +106,8 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
             cell.eventName.text = eventsArray?[indexPath.row].eventName  ?? ""
             cell.eventDate.text = eventsArray![indexPath.row].eventDate
             cell.eventTime.text = eventsArray![indexPath.row].eventTime
+            cell.layer.cornerRadius = 20
+
                return cell
                
            }else  if collectionView == self.teamsCollectionView  {

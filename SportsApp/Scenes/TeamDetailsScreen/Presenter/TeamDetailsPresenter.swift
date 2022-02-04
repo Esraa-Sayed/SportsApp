@@ -7,3 +7,18 @@
 //
 
 import Foundation
+import Kingfisher
+
+protocol TeamDetailsPresenterProtocol {
+   
+}
+
+class TeamDetailsPresenter : TeamDetailsPresenterProtocol{
+    
+   
+    
+    
+    var teamView = TeamDetailsViewController()
+    
+    
+}

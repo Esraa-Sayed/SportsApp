@@ -54,6 +54,11 @@ extension LeagueDetailsViewController {
         Toast.showToast(controller: self, message : "No internet connection", seconds: 4.0)
     }
     
+    func navigateToTeamDetails(team:TeamDetailsModel) {
+        let VC =  self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as! TeamDetailsViewController
+           VC.team = team
+           self.present(VC, animated: true, completion: nil)
+       }
     
 
 }
