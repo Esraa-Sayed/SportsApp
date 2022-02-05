@@ -35,19 +35,19 @@ class CoreDataServices
     
     func deleteSoredLeague(league: Country){
         DispatchQueue.global(qos: .background).async {[weak self] in
-            guard let self = self else {return}
-            do {
-                if let mContext = self.manageContext{
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteLeagues")
-                    fetchRequest.predicate = NSPredicate(format: "idLeague == %@", league.idLeague?.description ?? "")
-                    let result = try mContext.fetch(fetchRequest)
-                    mContext.delete((result as! [NSManagedObject]).first!)
-                    try self.manageContext?.save()
-                    print("league deleted successfully")
-                       }
-                   } catch let error {
-                       print("Detele all data in LeaguesEntity error :", error)
-                   }
+        guard let self = self else {return}
+        do {
+            if let mContext = self.manageContext{
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteLeagues")
+            fetchRequest.predicate = NSPredicate(format: "idLeague == %@", league.idLeague?.description ?? "")
+            let result = try mContext.fetch(fetchRequest)
+            mContext.delete((result as! [NSManagedObject]).first!)
+            try self.manageContext?.save()
+            print("league deleted successfully")
+               }
+           } catch let error {
+               print("Detele all data in LeaguesEntity error :", error)
+           }
         }
     }
     
