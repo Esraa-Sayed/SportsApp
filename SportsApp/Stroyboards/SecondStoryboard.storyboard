@@ -403,10 +403,14 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Xr0-t6-5q3" secondAttribute="bottom" id="8xR-UW-Moc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xr0-t6-5q3" secondAttribute="trailing" id="GUj-IF-6ub"/>
                                     <constraint firstItem="Xr0-t6-5q3" firstAttribute="leading" secondItem="j3G-DF-MMa" secondAttribute="leading" id="LqZ-C6-udZ"/>
                                     <constraint firstItem="Xr0-t6-5q3" firstAttribute="top" secondItem="j3G-DF-MMa" secondAttribute="top" id="XwV-qP-fIe"/>
                                     <constraint firstAttribute="trailing" secondItem="Xr0-t6-5q3" secondAttribute="trailing" id="YPp-IT-kF8"/>
                                     <constraint firstAttribute="bottom" secondItem="Xr0-t6-5q3" secondAttribute="bottom" id="pSs-D1-Ef3"/>
+                                    <constraint firstItem="Xr0-t6-5q3" firstAttribute="leading" secondItem="j3G-DF-MMa" secondAttribute="leading" id="wF3-pY-QG1"/>
+                                    <constraint firstItem="Xr0-t6-5q3" firstAttribute="top" secondItem="j3G-DF-MMa" secondAttribute="top" id="yym-hb-xVJ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I33-s3-69x">
