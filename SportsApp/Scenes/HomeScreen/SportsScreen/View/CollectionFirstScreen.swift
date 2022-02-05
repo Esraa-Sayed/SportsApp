@@ -31,18 +31,6 @@ class CollectionFirstScreen: UICollectionViewController,UICollectionViewDelegate
          refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         refreshControl.tintColor = .white
         collectionView.refreshControl = refreshControl
-        
-
-        //coreDataInsert
-       /*var data:DataOfFavLeague = DataOfFavLeague()
-        data.idLeague = "4617"
-        data.strSport = "Soccer"
-        data.strLeague = "Albanian Superliga"
-        data.strYoutube = ""
-        data.strBadge = "https://www.thesportsdb.com/images/media/league/badge/6my1u31578828133.png"*/
-        var coreData:CoreDataServices = CoreDataServices()
-        var result:[String:[FavouriteLeagues]] = coreData.displayFavouriteLeagues()
-       
     }
 
     @objc func refresh(_ sender: AnyObject) {
