@@ -8,22 +8,37 @@
 
 import UIKit
 
-class FavouriteLeaguesViewCell: UITableViewCell {
+class FavouriteLeaguesViewCell: UITableViewCell,FavouriteViewCell {
     @IBOutlet weak var favouriteLeagueImg: UIImageView!
-    
-
+     @IBOutlet weak var favLeagueText: UILabel!
     @IBAction func favLeagueButton(_ sender: UIButton) {
+        
     }
-    @IBOutlet weak var favLeagueText: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var youtubePressed: (() -> (String))?
+}
+extension FavouriteLeaguesViewCell
+{
+    var parentViewController: UIViewController?
+    {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil
+        {
+            parentResponder = parentResponder!.next
+            if let viewController = parentResponder as? UIViewController
+            {
+                return viewController
+            }
+        }
+        return nil
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func displayImag(imagURL: String) {
+       favouriteLeagueImg.kf.setImage(with: URL(string: imagURL),placeholder: UIImage(named: "PlaceholderImg"))
+        favouriteLeagueImg.layer.cornerRadius = 15
+        favouriteLeagueImg.layer.masksToBounds = true
+       favouriteLeagueImg.layer.cornerRadius = 5
     }
-
+    
+    func displayName(leaguesName: String) {
+        favLeagueText?.text = leaguesName
+    }
 }

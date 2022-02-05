@@ -34,14 +34,14 @@ class CollectionFirstScreen: UICollectionViewController,UICollectionViewDelegate
         
 
         //coreDataInsert
-       /* var data:DataOfFavLeague = DataOfFavLeague()
+       /*var data:DataOfFavLeague = DataOfFavLeague()
         data.idLeague = "4617"
         data.strSport = "Soccer"
         data.strLeague = "Albanian Superliga"
         data.strYoutube = ""
-        data.strBadge = "https://www.thesportsdb.com/images/media/league/badge/6my1u31578828133.png"
+        data.strBadge = "https://www.thesportsdb.com/images/media/league/badge/6my1u31578828133.png"*/
         var coreData:CoreDataServices = CoreDataServices()
-        coreData.insertfavouriteLeague(league: data)*/
+        var result:[String:[FavouriteLeagues]] = coreData.displayFavouriteLeagues()
        
     }
 

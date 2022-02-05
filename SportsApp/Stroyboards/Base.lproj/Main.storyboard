@@ -209,7 +209,7 @@
         <scene sceneID="3an-EW-RP5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sg3-Tz-67A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favourite" image="suit.heart.fill" catalog="system" id="pP3-Q4-0Qn"/>
+                    <tabBarItem key="tabBarItem" title="Favourite" image="star.fill" catalog="system" id="pP3-Q4-0Qn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SNO-I9-JE8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -315,7 +315,7 @@
     <resources>
         <image name="PlaceholderImg" width="96" height="96"/>
         <image name="house" catalog="system" width="64" height="54"/>
-        <image name="suit.heart.fill" catalog="system" width="64" height="54"/>
+        <image name="star.fill" catalog="system" width="64" height="58"/>
         <image name="youtube (3)" width="64" height="64"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.25224743030000002" blue="0.2699079949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
