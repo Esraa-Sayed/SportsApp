@@ -10,7 +10,10 @@ import UIKit
 
 class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,UICollectionViewDataSource , UICollectionViewDelegate, UIScrollViewDelegate  {
    
+    
    
+    @IBOutlet weak var addLeagueToFavourite: UIButton!
+    
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
 
@@ -53,9 +56,28 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
         self.teamsCollectionView.dataSource = self
        
         checkNet = leaguePresenter!.viewDidLoad(league: league!)
-        
+        setUpFavorite()
                
     }
+    
+    func setUpFavorite(){
+           if ((leaguePresenter?.isFovorite(leagueId:Int(league!.idLeague!) ?? 0 ))!) {
+               if #available(iOS 13.0, *) {
+                addLeagueToFavourite.setImage(UIImage(systemName: "star.fill"), for: UIControl.State.normal)
+               }
+           }else {
+               if #available(iOS 13.0, *) {
+                addLeagueToFavourite.setImage(UIImage(systemName: "star"), for: UIControl.State.normal)
+              }
+           }
+       }
+       func addToFavorites(){
+           leaguePresenter?.addTofaVorite(league: league!)
+       }
+       func RemoveFromFavorites(){
+           leaguePresenter?.removeFromfaVorite(league: league!)
+       }
+
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -121,5 +143,27 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
            return UICollectionViewCell()
        }
 
+    
   
+    @IBAction func addLeagueToFavourite(_ sender: Any) {
+        if (!((leaguePresenter?.isFovorite(leagueId: Int(league!.idLeague!) ?? 0 ))!)){
+           if #available(iOS 13.0, *) {
+               
+            addLeagueToFavourite.setImage(UIImage(systemName: "star.fill"), for: UIControl.State.normal)
+            leaguePresenter?.addTofaVorite(league: league!)
+           } else {
+             
+           }
+       }else {
+           if #available(iOS 13.0, *) {
+              
+            addLeagueToFavourite.setImage(UIImage(systemName: "star"), for: UIControl.State.normal)
+              leaguePresenter?.removeFromfaVorite(league: league!)
+          } else {
+            
+          }
+       }
+    }
+    
+    
 }

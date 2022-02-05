@@ -16,7 +16,8 @@ protocol LeagueDetailsProtocol {
     func loadTeams(id:String)
     func  getTeamsCount() -> Int
      func viewDidLoad(league : Country)->Bool 
-    
+    func isFovorite(leagueId: Int)-> Bool
+    func removeFromfaVorite(league: Country)
     
    }
 protocol LeagueDetailsViewProtocol :class {
@@ -34,6 +35,8 @@ protocol LeagueDetailsViewProtocol :class {
 
 class LeagueDetailsPresenter : LeagueDetailsProtocol {
     
+    lazy var dbSource: CoreDataServices = CoreDataServices()
+
     
     var leagueDetailsView:LeagueDetailsViewProtocol?
     var dataSource = EventDataSource()
@@ -118,6 +121,17 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
     {
       let team = teamsArray![index]
       leagueDetailsView?.navigateToTeamDetails(team: team)
+    }
+    func isFovorite(leagueId: Int)-> Bool{
+        return dbSource.isFovorite(leagueId: leagueId)
+    }
+     
+    func addTofaVorite(league: Country){
+        dbSource.insertfavouriteLeague(league: league)
+    }
+      
+    func removeFromfaVorite(league: Country){
+        dbSource.deleteSoredLeague(league: league)
     }
    
 }
