@@ -23,10 +23,10 @@ class TableLeaguesViewController: UITableViewController {
         self.view.addSubview(indicator!)
         
         let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]
-               refreshControlTable.attributedTitle = NSAttributedString(string: "Refresh", attributes: attributes)
-                refreshControlTable.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-               refreshControlTable.tintColor = .white
-             tableView.refreshControl =  refreshControlTable
+        refreshControlTable.attributedTitle = NSAttributedString(string: "Refresh", attributes: attributes)
+        refreshControlTable.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        refreshControlTable.tintColor = .white
+        tableView.refreshControl =  refreshControlTable
         
         presenter = AllLeaguesVCPresenter(view: self)
         presenter.setSportName(sportName: sportName)
@@ -34,7 +34,6 @@ class TableLeaguesViewController: UITableViewController {
        {
            Toast.showToast(controller: self, message : "No internet connection", seconds: 2.0)
        }
-        //viewInCell.layer.cornerRadius = 10
         
     }
     @objc func refresh(_ sender: AnyObject) {
@@ -49,18 +48,16 @@ class TableLeaguesViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return presenter.getLeaguesCount()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 1
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "LeagueViewCell", for: indexPath) as! LeagueViewCell
         presenter.configure(cell: &cell, forIndex: indexPath.section)
-        let verticalPadding: CGFloat = 8
+        let _: CGFloat = 8
         cell.ViewInCell.layer.cornerRadius = 8
 
         return cell
@@ -77,7 +74,6 @@ class TableLeaguesViewController: UITableViewController {
     // Make the background color show through
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        //rgb(0, 129, 138)
         headerView.backgroundColor = UIColor(red: 0.0/255.0, green: 95.0/255.0, blue: 91.0/255.0, alpha: 1.0)
         return headerView
     }
