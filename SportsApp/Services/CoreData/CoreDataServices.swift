@@ -43,6 +43,7 @@ class CoreDataServices
                     let result = try mContext.fetch(fetchRequest)
                     mContext.delete((result as! [NSManagedObject]).first!)
                     try self.manageContext?.save()
+                    print("league deleted successfully")
                        }
                    } catch let error {
                        print("Detele all data in LeaguesEntity error :", error)
