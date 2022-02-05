@@ -10,6 +10,7 @@ import UIKit
 
 class TableLeaguesViewController: UITableViewController {
     @IBOutlet var myTable: UITableView!
+    let refreshControlTable = UIRefreshControl()
     var sportName:String = ""
     var presenter :AllLeaguesVCPresenter!
     var indicator :UIActivityIndicatorView?
@@ -20,6 +21,13 @@ class TableLeaguesViewController: UITableViewController {
         indicator = UIActivityIndicatorView(style: .large)
         indicator?.center = self.view.center
         self.view.addSubview(indicator!)
+        
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]
+               refreshControlTable.attributedTitle = NSAttributedString(string: "Refresh", attributes: attributes)
+                refreshControlTable.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+               refreshControlTable.tintColor = .white
+             tableView.refreshControl =  refreshControlTable
+        
         presenter = AllLeaguesVCPresenter(view: self)
         presenter.setSportName(sportName: sportName)
        if !presenter.viewDidLoad()
@@ -29,7 +37,15 @@ class TableLeaguesViewController: UITableViewController {
         //viewInCell.layer.cornerRadius = 10
         
     }
-
+    @objc func refresh(_ sender: AnyObject) {
+        if !presenter.viewDidLoad()
+          {
+              Toast.showToast(controller: self, message : "No internet connection", seconds: 1.0)
+          }
+        tableView.reloadData()
+        refreshControlTable.endRefreshing()
+       
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
