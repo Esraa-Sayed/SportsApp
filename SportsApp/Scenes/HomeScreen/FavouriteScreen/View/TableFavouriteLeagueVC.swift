@@ -34,7 +34,7 @@ class TableFavouriteLeagueVC: UITableViewController {
         var cell = tableView.dequeueReusableCell(withIdentifier: "FavouriteLeaguesViewCell", for: indexPath) as! FavouriteLeaguesViewCell
 
         presenter.configure(cell: &cell, forSection: indexPath.section, forIndex: indexPath.row)
-        let verticalPadding: CGFloat = 8
+        let _: CGFloat = 8
         cell.viewInCell.layer.cornerRadius = 8
         return cell
     }
@@ -65,6 +65,5 @@ class TableFavouriteLeagueVC: UITableViewController {
                Toast.showToast(controller: self, message : "No Data found", seconds: 2.0)
            }
         tableView.reloadData()
-        print("********viewWillAppear*********")
     }
 }

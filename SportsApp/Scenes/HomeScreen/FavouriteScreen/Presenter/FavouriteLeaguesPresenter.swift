@@ -57,8 +57,9 @@ class FavouriteLeaguesPresenter
         cell.displayName(leaguesName: league.strLeague ?? "Not found")
         cell.youtubePressed =
          {
-                var youtube = league.strYoutube
-                if CheckInternetConnectivity.isConnectedToInternet {
+            let youtube = league.strYoutube
+            if CheckInternetConnectivity.isConnectedToInternet
+            {
                     if youtube!.isEmpty
                       {
                           return "No link found"
@@ -80,7 +81,7 @@ class FavouriteLeaguesPresenter
     func didSelectedSectionAtIndex(section:Int,row:Int)
     {
         let league = Array(result)[section].value[row]
-        var country:Country = Country()
+        let country:Country = Country()
         country.idLeague = league.idLeague
         country.strBadge = league.strBadge
         country.strLeague = league.strLeague ?? "Not found"

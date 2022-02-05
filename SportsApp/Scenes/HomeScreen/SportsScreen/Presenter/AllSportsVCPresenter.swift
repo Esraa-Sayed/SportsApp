@@ -47,7 +47,6 @@ class AllSportsVCPresenter
             switch result{
             case .success(let response):
                 self?.sports = response?.sports ?? []
-                print("\(self?.sports[0].idSport)")
                 self?.view?.fetchingDataSuccess()
             case .failure(_):
                 print("Error")
@@ -66,8 +65,6 @@ class AllSportsVCPresenter
     func didSelectedRow(index:Int)
     {
         let sport = sports[index]
-        print(sport.strSport)
-        //sportName: sport.strSport ?? "UnKnown"
         view?.navigateToLeagues(sportName:sport.strSport ?? "")
     }
 
