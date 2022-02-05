@@ -18,21 +18,15 @@ class TableFavouriteLeagueVC: UITableViewController {
         indicator?.center = self.view.center
         self.view.addSubview(indicator!)
         presenter = FavouriteLeaguesPresenter(view: self)
-        if !presenter.viewDidLoad()
-        {
-            Toast.showToast(controller: self, message : "No Data found", seconds: 2.0)
-        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return presenter.getFavLeaguesSectionCount()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return presenter.getFavLeaguesRowCount(index: section)
     }
     
@@ -40,10 +34,37 @@ class TableFavouriteLeagueVC: UITableViewController {
         var cell = tableView.dequeueReusableCell(withIdentifier: "FavouriteLeaguesViewCell", for: indexPath) as! FavouriteLeaguesViewCell
 
         presenter.configure(cell: &cell, forSection: indexPath.section, forIndex: indexPath.row)
-
+        let verticalPadding: CGFloat = 8
+        cell.viewInCell.layer.cornerRadius = 8
         return cell
     }
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return presenter.sectionName(section: section)
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectedSectionAtIndex(section: indexPath.section, row: indexPath.row)
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           return 100
+       }
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+
+        view.tintColor = UIColor.clear
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        header.textLabel?.frame = header.frame
+        header.textLabel?.textAlignment = NSTextAlignment.center
+    }
+       override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+           return 48
+       }
+    override func viewWillAppear(_ animated: Bool) {
+         if !presenter.viewDidLoad()
+           {
+               Toast.showToast(controller: self, message : "No Data found", seconds: 2.0)
+           }
+        tableView.reloadData()
+        print("********viewWillAppear*********")
     }
 }

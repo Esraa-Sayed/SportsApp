@@ -20,6 +20,7 @@ class CoreDataServices
     {
         let entity = NSEntityDescription.entity(forEntityName: "FavouriteLeagues", in: manageContext!)
         let leagueAttr = NSManagedObject(entity: entity!, insertInto: manageContext)
+        league.strLeague = league.strLeague.replacingOccurrences(of: "%20", with:" ")
         print("Insert league with name  \(league.strLeague)")
         leagueAttr.setValue(league.idLeague, forKey: "idLeague")
         leagueAttr.setValue(league.strSport, forKey: "strSport")
@@ -75,26 +76,14 @@ class CoreDataServices
         let fetchReq = NSFetchRequest<NSManagedObject>(entityName: "FavouriteLeagues")
         do{
             leagues = try manageContext?.fetch(fetchReq) as! [FavouriteLeagues]
-            print("Count of leagues** \(leagues.count)")
             for i in leagues
             {
-                print("i.strSport!  \(i.strSport!)")
                 if(favLeagues[i.strSport!] == nil)
                 {
                     favLeagues[i.strSport!] = []
                 }
                 favLeagues[i.strSport!]?.append(i)
             }
-          //  print("Count of leagues## \(Array(favLeagues)[1].value.count)")
-            
-           
-               for (key, value) in favLeagues {
-                    print("\(key) : \(value.count)")
-                    for i in value
-                    {
-                        print("\(key) : \(i.strLeague!)")
-                    }
-               }
         }catch let error as NSError{
             print(error)
         }

@@ -40,8 +40,6 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
              Toast.showToast(controller: self, message : "No internet connection", seconds: 4.0)
         }
     }
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         leaguePresenter = LeagueDetailsPresenter(view:self )

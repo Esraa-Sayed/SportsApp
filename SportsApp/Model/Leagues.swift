@@ -14,6 +14,13 @@ class Country:Decodable
     var strYoutube:String?
     var strBadge:String?
     var strLeague:String
+    init() {
+        idLeague = ""
+        strSport = ""
+        strYoutube = ""
+        strBadge = ""
+        strLeague = ""
+    }
 }
 class LeaguesResponse:Decodable
 {

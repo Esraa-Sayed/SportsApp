@@ -77,4 +77,15 @@ class FavouriteLeaguesPresenter
     func sectionName(section:Int) -> String {
         return Array(result)[section].key
     }
+    func didSelectedSectionAtIndex(section:Int,row:Int)
+    {
+        let league = Array(result)[section].value[row]
+        var country:Country = Country()
+        country.idLeague = league.idLeague
+        country.strBadge = league.strBadge
+        country.strLeague = league.strLeague ?? "Not found"
+        country.strSport = league.strSport
+        country.strLeague = (country.strLeague.replacingOccurrences(of: " ", with: "%20"))
+        view?.navigateToLeagueDetils(league: country)
+    }
 }
