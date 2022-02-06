@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,UICollectionViewDataSource , UICollectionViewDelegate, UIScrollViewDelegate  {
+class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,UICollectionViewDataSource , UICollectionViewDelegate  {
    
     
    
@@ -43,7 +43,6 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     override func viewDidLoad() {
         super.viewDidLoad()
         leaguePresenter = LeagueDetailsPresenter(view:self )
-        self.ScrollView.delegate = self
         self.eventsCollectionView.delegate = self
         self.eventsCollectionView.dataSource = self
               
