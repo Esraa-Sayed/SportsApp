@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,16 +16,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PngItem_2443980" translatesAutoresizingMaskIntoConstraints="NO" id="Yf0-Pq-DkM">
-                                <rect key="frame" x="40.5" y="271.5" width="333" height="353"/>
+                                <rect key="frame" x="40.666666666666657" y="271.66666666666669" width="330" height="330.00000000000006"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="333" id="j1c-dG-rjI"/>
-                                    <constraint firstAttribute="height" constant="353" id="oUz-wG-UKM"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="330" id="7oR-w4-uyc"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="330" id="XUR-FQ-tbY"/>
+                                    <constraint firstAttribute="width" constant="330" id="j1c-dG-rjI"/>
+                                    <constraint firstAttribute="height" constant="330" id="oUz-wG-UKM"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SHOOOT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJJ-qH-UJy">
-                                <rect key="frame" x="108" y="707" width="221" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHOOOT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJJ-qH-UJy">
+                                <rect key="frame" x="156.66666666666666" y="707" width="123.66666666666666" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1oW-Ev-gjo"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="EXO-fz-5LG"/>
+                                    <constraint firstAttribute="width" constant="123.67" id="KC5-9P-b9C"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" id="q27-Kk-7qZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
@@ -35,12 +39,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Yf0-Pq-DkM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="3M7-KI-UQ0"/>
-                            <constraint firstItem="Yf0-Pq-DkM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="6Mh-rP-W1A"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zJJ-qH-UJy" secondAttribute="trailing" constant="145" id="7Sa-s3-Giy"/>
-                            <constraint firstItem="zJJ-qH-UJy" firstAttribute="top" secondItem="Yf0-Pq-DkM" secondAttribute="bottom" constant="82.5" id="VVN-oB-QVi"/>
-                            <constraint firstItem="zJJ-qH-UJy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cej-XL-1JS"/>
-                            <constraint firstItem="zJJ-qH-UJy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="145" id="crg-yG-Hmi"/>
+                            <constraint firstItem="Yf0-Pq-DkM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-11.333333333333371" id="3M7-KI-UQ0"/>
+                            <constraint firstItem="Yf0-Pq-DkM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-1.3333333333333428" id="6Mh-rP-W1A"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zJJ-qH-UJy" secondAttribute="trailing" id="7Sa-s3-Giy"/>
+                            <constraint firstItem="zJJ-qH-UJy" firstAttribute="top" secondItem="Yf0-Pq-DkM" secondAttribute="bottom" constant="105.33333333333337" id="VVN-oB-QVi"/>
+                            <constraint firstItem="zJJ-qH-UJy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="11.5" id="cej-XL-1JS"/>
+                            <constraint firstItem="zJJ-qH-UJy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="crg-yG-Hmi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

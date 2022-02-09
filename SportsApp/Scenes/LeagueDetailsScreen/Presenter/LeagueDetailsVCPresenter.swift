@@ -54,13 +54,13 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
         if CheckInternetConnectivity.isConnectedToInternet {
             print("Yes! internet is available.")
           
-//           loadEvents(id:league.idLeague!)
-//           loadLatestResults(id:league.idLeague!)
-//           loadTeams(id: league.strLeague)
+           loadEvents(id:league.idLeague!)
+           loadLatestResults(id:league.idLeague!)
+           loadTeams(id: league.strLeague)
             
-            loadEvents(id:"")
-            loadLatestResults(id:"4328")
-            loadTeams(id: "English%20Premier%20League")
+//            loadEvents(id:"")
+//            loadLatestResults(id:"4328")
+//            loadTeams(id: "English%20Premier%20League")
             
             print(league.idLeague!)
             return true;
