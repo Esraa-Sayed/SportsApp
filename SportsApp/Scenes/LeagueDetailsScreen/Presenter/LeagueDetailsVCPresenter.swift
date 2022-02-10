@@ -108,7 +108,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
      dataSource.getTeam(id: id, complitionHandler: { (result,Error) in
      self.teamsArray = result
      self.leagueDetailsView?.hideIndicator()
-        self.leagueDetailsView?.updateUIViewTeam(teams: self.teamsArray!)
+        self.leagueDetailsView?.updateUIViewTeam(teams: self.teamsArray ?? [])
      })
      self.leagueDetailsView?.refresh()
     }
