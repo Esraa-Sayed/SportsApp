@@ -76,7 +76,7 @@ class LeagueDetailsPresenter : LeagueDetailsProtocol {
     
     
     func loadEvents(id:String) {
-        dataSource.getEvents(id: id, complitionHandler: { (result,Error) in
+        dataSource.getEvents(eid: id, complitionHandler: { (result,Error) in
         self.eventsArray = result
         self.leagueDetailsView?.hideIndicator()
         self.leagueDetailsView?.updateUIViewEvent(events: self.eventsArray!)

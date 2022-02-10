@@ -33,6 +33,8 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
     var teamsArray:[TeamDetailsModel]?
     var league : Country?
     var checkNet :Bool?
+    let refreshControl = UIRefreshControl()
+
     
     @IBOutlet weak var ScrollView: UIScrollView!
     override func viewDidAppear(_ animated: Bool) {
@@ -54,8 +56,27 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
        
         checkNet = leaguePresenter!.viewDidLoad(league: league!)
         setUpFavorite()
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]
+       refreshControl.attributedTitle = NSAttributedString(string: "Refresh", attributes: attributes)
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+       refreshControl.tintColor = .white
+       eventsCollectionView.refreshControl = refreshControl
+       latestResultsCollectionView.refreshControl = refreshControl
+       teamsCollectionView.refreshControl = refreshControl
                
     }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        if !(leaguePresenter?.viewDidLoad(league: league!))!
+             {
+                 Toast.showToast(controller: self, message : "No internet connection", seconds: 1.0)
+             }
+        teamsCollectionView.reloadData()
+        latestResultsCollectionView.reloadData()
+        eventsCollectionView.reloadData()
+           refreshControl.endRefreshing()
+          
+       }
     
     func setUpFavorite(){
            if ((leaguePresenter?.isFovorite(leagueId:Int(league!.idLeague!) ?? 0 ))!) {

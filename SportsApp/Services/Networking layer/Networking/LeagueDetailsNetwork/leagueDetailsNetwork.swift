@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 protocol EventDataSourceProtocol {
-    func getEvents(id:String,complitionHandler : @escaping ([Event]?,String) -> Void)
+    func getEvents(eid:String,complitionHandler : @escaping ([Event]?,String) -> Void)
     func getLatestResults (id:String,complitionHandler : @escaping ([Event]?,String) -> Void)
     func getTeam(id:String,complitionHandler : @escaping ([TeamDetailsModel]?,String) -> Void)
     
@@ -25,8 +25,8 @@ class EventDataSource : EventDataSourceProtocol {
     let urlTeams = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l="
     
     
-    func getEvents(id: String,complitionHandler : @escaping ([Event]?,String) -> Void) {
-        let url = urlMain + id
+    func getEvents(eid: String,complitionHandler : @escaping ([Event]?,String) -> Void) {
+        let url = urlSub + eid
         var eventsArray = [Event]()
         Alamofire.request(url).response { response in
             guard let statusCode = response.response?.statusCode else
@@ -37,7 +37,7 @@ class EventDataSource : EventDataSourceProtocol {
             if statusCode == 200{
                 if let data = response.data {
                 let json = JSON(data)
-                let events = json[Constants.EVENT].arrayValue
+                let events = json[Constants.EVENTS].arrayValue
                 for event in events {
                     let id = event[Constants.idEvent].intValue
                     let name = event[Constants.strEvent].stringValue
@@ -46,7 +46,7 @@ class EventDataSource : EventDataSourceProtocol {
                     let thumb = event[Constants.strThumb].stringValue
                     let intHomeScore = event[Constants.intHomeScore].stringValue
                     let intAwayScore = event[Constants.intAwayScore].stringValue
-                    if intAwayScore == ""{
+                    if intAwayScore == ""  {
                     eventsArray.append(Event(ID: id, eventName: name, eventDate: date, eventTime: time, thumb: thumb, intHomeScore: intHomeScore, intAwayScore: intAwayScore))
                        }
                    }
