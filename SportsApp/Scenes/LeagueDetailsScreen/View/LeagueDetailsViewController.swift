@@ -135,7 +135,7 @@ class LeagueDetailsViewController: UIViewController ,LeagueDetailsViewProtocol,U
                    + " VS " + String (describing: latestResultsArray![indexPath.row].intAwayScore )
                cell.teamDate.text = latestResultsArray![indexPath.row].eventDate
                cell.teamTime.text = latestResultsArray![indexPath.row].eventTime
-            cell.thumbImage.kf.setImage(with: URL(string: latestResultsArray![indexPath.row].thumbURL),placeholder: UIImage(named: "PlaceholderImg"))
+            cell.thumbImage.kf.setImage(with: URL(string: latestResultsArray![indexPath.row].thumbURL),placeholder: UIImage(named: "newPlaceHolder"))
             cell.layer.cornerRadius = 20
 
                return cell
